@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "My Core Values App",
+  "name": "Interactive website to help you identify the values that are most important to you",
   "icons": [
     {
       "src": "favicon.ico",
