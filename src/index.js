@@ -2,17 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '@atlaskit/css-reset';
 import styled from 'styled-components';
-import TopPanel from './components/TopPanel';
+import TopSection from './components/topSection/TopSection';
+import MiddleSection from './components/middleSection/MiddleSection';
+import BottomSection from './components/bottomSection/BottomSection';
 
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
+  font-family: 'Optima';
 `;
 
 const App = () => (
   <Container>
-    <TopPanel/>
+    <TopSection/>
+    <MiddleSection/>
+    <BottomSection/>
   </Container>
 );
 

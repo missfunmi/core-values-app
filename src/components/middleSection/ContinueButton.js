@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.div`
-  font-family: 'Optima';
   border: 2px solid #c9d3dd;
   background-color: #c9d3dd;
   color: #ffffff;

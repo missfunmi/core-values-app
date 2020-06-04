@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import CoreValue from './CoreValue';
-import valuesData from '../values-data';
+import valuesData from '../../values-data';
 
 const Container = styled.div `
   border: none;
@@ -11,7 +11,7 @@ const Container = styled.div `
   padding: 20px;
 `;
 
-class CoreValueTable extends React.Component {
+class CoreValuePanel extends React.Component {
   render() {
     return (
       <Container>
@@ -23,4 +23,4 @@ class CoreValueTable extends React.Component {
   }
 }
 
-export default CoreValueTable;
+export default CoreValuePanel;

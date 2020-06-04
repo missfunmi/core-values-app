@@ -1,30 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from './Header';
-import CoreValueTable from './CoreValueTable';
+import CoreValuePanel from './CoreValuePanel';
 import ContinueButton from './ContinueButton';
 
 const Container = styled.div`
-  font-family: 'Optima';
   padding: 50px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 92%;
 `;
 
-class TopPanel extends React.Component {
+class TopSection extends React.Component {
   render() {
     return (
       <Container>
         <Header/>
-        <CoreValueTable/>
+        <CoreValuePanel/>
         <ContinueButton/>
       </Container>
     );
   }
 }
 
-export default TopPanel;
+export default TopSection;
