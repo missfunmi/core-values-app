@@ -4,10 +4,10 @@ import FinalCoreValueLabel from './FinalCoreValueLabel';
 import FinalCoreValueStatement from './FinalCoreValueStatement';
 
 const Container = styled.div`
-  border: 1pt solid #c9d3dd;
   width: 100%;
   color: #798da3;
   display: flex;
+  min-height: 60px;
   justify-content: space-between;
 `;
 

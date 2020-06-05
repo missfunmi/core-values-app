@@ -3,7 +3,7 @@ const selectedValuesData = [
   'freedom',
   'growth',
   'rest',
-  'service'
+  'personal development'
 ];
 
 export default selectedValuesData;

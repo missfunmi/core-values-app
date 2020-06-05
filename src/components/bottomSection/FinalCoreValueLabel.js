@@ -6,9 +6,8 @@ const Label = styled.div`
   padding: 10px 18px;
   font-size: 18px;
   font-weight: bold;
-  width: 30%;
+  width: 40%;
   text-align: left;
-  /* border: solid; */
 `;
 
 class FinalCoreValueLabel extends React.Component {

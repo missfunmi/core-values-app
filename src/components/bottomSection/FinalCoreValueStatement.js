@@ -6,7 +6,6 @@ const Label = styled.div`
   padding: 15px 18px 10px;
   font-size: 14px;
   text-align: left;
-  /* border: solid; */
   width: 70%;
   text-decoration: underline;
 `;

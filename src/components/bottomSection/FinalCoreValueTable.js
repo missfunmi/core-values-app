@@ -5,12 +5,13 @@ import selectedValuesData from '../../selected-values-data';
 
 const Container = styled.div`
   margin: 8px;
-  border: 2pt solid #c9d3dd;
+  border: 1.5pt solid #c9d3dd;
   background-color: white;
   border-radius: 4px;
   width: 400px;
   display: flex;
   flex-direction: column;
+  padding: 10px 20px;
 `;
 
 class FinalCoreValueTable extends React.Component {
