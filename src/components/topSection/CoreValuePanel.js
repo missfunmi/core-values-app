@@ -12,11 +12,22 @@ const Container = styled.div `
 `;
 
 class CoreValuePanel extends React.Component {
+  isSelected(coreValue) {
+    const selections = this.props.selections;
+    return selections.includes(coreValue);
+  }
   render() {
+    
+
     return (
       <Container>
         {valuesData.map((coreValue, index) => (
-          <CoreValue key={index} text={coreValue}/>
+          <CoreValue 
+            key={index} 
+            text={coreValue}
+            selected={this.isSelected(coreValue)}
+            updateSelections={this.props.updateSelections}
+          />
         ))}
       </Container>
     );

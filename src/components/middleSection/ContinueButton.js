@@ -10,6 +10,7 @@ const Button = styled.div`
   width: 85px;
   padding: 6px 25px;
   text-align: center;
+  cursor: pointer; /* TODO: toggle cursor based on state */
 `;
 
 class ContinueButton extends React.Component {

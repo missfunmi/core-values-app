@@ -15,12 +15,39 @@ const Container = styled.div`
 `;
 
 class TopSection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selections: [],
+    };
+    this.updateSelections = this.updateSelections.bind(this);
+  }
+
+  updateSelections(selection) {
+    const updatedSelections = Array.from(this.state.selections);
+    if (updatedSelections.includes(selection)) {
+      const indexToRemove = updatedSelections.indexOf(selection);
+      updatedSelections.splice(indexToRemove, 1);
+    } else {
+      updatedSelections.push(selection);
+      updatedSelections.sort();
+    }
+    this.setState({
+      selections: updatedSelections
+    });
+  }
+
   render() {
     return (
       <Container>
         <Header/>
-        <CoreValuePanel/>
-        <ContinueButton/>
+        <CoreValuePanel 
+          selections={this.state.selections}
+          updateSelections={this.updateSelections}
+        />
+        <ContinueButton 
+          selections={this.state.selections} 
+          shouldActivate={this.props.isDoneSelecting}/>
       </Container>
     );
   }

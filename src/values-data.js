@@ -42,6 +42,7 @@ const valuesData = [
   'excellence',
   'expressiveness',
   'fairness',
+  'faith',
   'family',
   'flexibility',
   'friendships',
