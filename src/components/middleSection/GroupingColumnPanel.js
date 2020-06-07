@@ -10,15 +10,26 @@ const Container = styled.div `
   padding-bottom: 20px;
 `;
 
+const DEFAULT_NUMBER_COLUMNS = 5;
+const GROUPING_COLUMN_PREFIX = 'grouping-column-';
+
 class GroupingColumnPanel extends React.Component {
   render() {
+    let groupingColumns = [];
+    for (let i=1; i <= DEFAULT_NUMBER_COLUMNS; i++) {
+      const columnId = `${GROUPING_COLUMN_PREFIX}${i}`;
+      groupingColumns.push(
+        <GroupingColumn 
+          columnId={columnId} 
+          coreValues={this.props.coreValues} 
+          columnValues={this.props.columns[columnId].coreValues}
+        />
+      );
+    }
+
     return (
       <Container>
-        <GroupingColumn/>
-        <GroupingColumn/>
-        <GroupingColumn/>
-        <GroupingColumn/>
-        <GroupingColumn/>
+        {groupingColumns}
       </Container>
     );
   }

@@ -1,34 +1,59 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Draggable } from 'react-beautiful-dnd';
+
+const Container = styled.div``;
 
 const Button = styled.div`
   text-align: center;
   border-radius: 20px;
   padding: 6px 25px;
-  margin-bottom: 10px;
-  margin-right: 5px;
+  margin: 0;
   cursor: pointer;
-  color: ${props => (props.selected ? '#ffffff': '#798da3')};
-  background-color: ${props => (props.selected ? '#3d8af7': '#ffffff')};
-  border: ${props => (props.selected ? '2px solid #3d8af7': '2px solid #c9d3dd')};
+  display: block;
+  color: ${props => (props.selected ? '#ffffff' : '#798da3')};
+  background-color: ${props => (props.selected ? '#3d8af7' : '#ffffff')};
+  border: ${props => (props.selected ? '2px solid #3d8af7' : '2px solid #c9d3dd')};
 `;
+
+const INDEX = 0;
 
 class CoreValue extends React.Component {
   handleClick(coreValue) {
-    this.props.updateSelections(coreValue);
+    if (this.props.updateSelections) {
+      this.props.updateSelections(coreValue);
+    }
   }
 
+  draggableId(index) {
+    const draggableId = 'core-value-parent-'.concat(index);
+    return draggableId;
+  };
+
   render() {
-    const coreValue = this.props.text;
     const currentlySelected = this.props.selected;
+    const isDragDisabled = !currentlySelected;
 
     return (
-      <Button 
-        onClick={() => this.handleClick(coreValue)} 
-        selected={currentlySelected}
-      >
-        {this.props.text}
-      </Button>
+      <Container>
+        <Draggable
+          draggableId={this.props.coreValueId}
+          index={INDEX}
+          isDragDisabled={isDragDisabled}
+        >
+          {(provided, snapshot) => (
+            <Button
+              onClick={() => this.handleClick(this.props.text)}
+              selected={currentlySelected}
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+            >
+              {this.props.text}
+            </Button>
+          )}
+        </Draggable>
+      </Container>
     )
   }
 }

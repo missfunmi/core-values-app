@@ -23,6 +23,7 @@ class TopSection extends React.Component {
     this.updateSelections = this.updateSelections.bind(this);
   }
 
+  // TODO update logic to use splice
   updateSelections(selection) {
     const updatedSelections = Array.from(this.state.selections);
     if (updatedSelections.includes(selection)) {
@@ -42,6 +43,7 @@ class TopSection extends React.Component {
       <Container>
         <Header/>
         <CoreValuePanel 
+          coreValues={this.props.coreValues}
           selections={this.state.selections}
           updateSelections={this.updateSelections}
         />

@@ -17,7 +17,7 @@ class MiddleSection extends React.Component {
   render() {
     return (
       <Container>
-        <GroupingColumnPanel/>
+        <GroupingColumnPanel coreValues={this.props.coreValues} columns={this.props.columns}/>
         <ContinueButton/>
       </Container>
     );
