@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
 import CoreValue from '../topSection/CoreValue';
 
-const Container = styled.div`
+const CoreValueList = styled.div`
   margin: 8px;
   border: 2px solid #c9d3dd;
   border-radius: 10px;
@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 const InnerColumn = styled.div`
-  padding: 15px 8px;
+  padding: 8px 0;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -24,7 +24,7 @@ const InnerColumn = styled.div`
 `;
 
 const CoreValueWrapper = styled.div`
-  margin: 5px 2px;
+  margin: 5px;
 `;
 
 class GroupingColumn extends React.Component {
@@ -37,12 +37,13 @@ class GroupingColumn extends React.Component {
   render() {
     const columnId = this.props.columnId;
     const columnValues = this.props.columnValues ? this.props.columnValues : [];
-    const isSelected = true;
+    const isSelected = false;
     return (
       <Droppable droppableId={columnId} key={columnId}>
-        {(provided) => (
-          <Container
+        {(provided, snapshot) => (
+          <CoreValueList
             ref={provided.innerRef}
+            isDraggingOver={snapshot.isDraggingOver}
             {...provided.droppableProps}
           >
             <InnerColumn>
@@ -58,7 +59,7 @@ class GroupingColumn extends React.Component {
               ))}
               {provided.placeholder}
             </InnerColumn>
-          </Container>
+          </CoreValueList>
         )}
       </Droppable>
     );

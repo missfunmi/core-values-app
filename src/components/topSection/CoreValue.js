@@ -16,8 +16,6 @@ const Button = styled.div`
   border: ${props => (props.selected ? '2px solid #3d8af7' : '2px solid #c9d3dd')};
 `;
 
-const INDEX = 0;
-
 class CoreValue extends React.Component {
   handleClick(coreValue) {
     if (this.props.updateSelections) {
@@ -38,7 +36,7 @@ class CoreValue extends React.Component {
       <Container>
         <Draggable
           draggableId={this.props.coreValueId}
-          index={INDEX}
+          index={this.props.index}
           isDragDisabled={isDragDisabled}
         >
           {(provided, snapshot) => (

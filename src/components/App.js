@@ -20,28 +20,17 @@ const CORE_VALUE_PREFIX = 'coreValue-';
 const GROUPING_COLUMN_PREFIX = 'grouping-column-';
 const DEFAULT_NUMBER_COLUMNS = 5;
 
-
 class App extends React.Component {
   constructor(props) {
     super(props);
-    let groupingColumns = {};
-    for (let i = 1; i <= DEFAULT_NUMBER_COLUMNS; i++) {
-      const columnId = `${GROUPING_COLUMN_PREFIX}${i}`;
-      groupingColumns = {
-        ...groupingColumns,
-        [columnId]: {
-          coreValues: []
-        }
-      }
-    }
     this.state = {
       isTopPanelDoneSelecting: false,
-      coreValues: this.populateCoreValuesIdentifiers(),
-      groupingColumns: groupingColumns
+      coreValues: this.initializeCoreValuesState(),
+      groupingColumns: this.initializeGroupingColumnsState()
     }
   }
 
-  populateCoreValuesIdentifiers() {
+  initializeCoreValuesState() {
     return valuesData.map((coreValue, index) => {
       const coreValueId = CORE_VALUE_PREFIX.concat(index);
       return {
@@ -54,12 +43,26 @@ class App extends React.Component {
     });
   }
 
+  initializeGroupingColumnsState() {
+    let groupingColumns = {};
+    for (let i = 1; i <= DEFAULT_NUMBER_COLUMNS; i++) {
+      const columnId = `${GROUPING_COLUMN_PREFIX}${i}`;
+      groupingColumns = {
+        ...groupingColumns,
+        [columnId]: {
+          coreValues: []
+        }
+      }
+    }
+    return groupingColumns;
+  }
+
   onBeforeDragStart = (start) => {
-    if (start.draggableId.startsWith(CORE_VALUE_PREFIX)) {
-      const dragId = start.draggableId;
+    const { draggableId } = start;
+    if (draggableId.startsWith(CORE_VALUE_PREFIX)) {
       let newCoreValues = Array.from(this.state.coreValues);
       newCoreValues = newCoreValues.map(coreValue => {
-        return (coreValue.id === dragId)
+        return (coreValue.id === draggableId)
           ? {
             ...coreValue,
             hasStartedDrag: true,
@@ -81,7 +84,7 @@ class App extends React.Component {
   }
 
   // TODO - Clean this up
-  onDragEnd = result => {
+  onDragEnd = (result) => {
     const { destination, source, draggableId, reason } = result;
     if (!destination || reason === 'CANCEL') {
       let newCoreValues = Array.from(this.state.coreValues);

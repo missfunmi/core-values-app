@@ -21,6 +21,7 @@ class GroupingColumnPanel extends React.Component {
       groupingColumns.push(
         <GroupingColumn 
           columnId={columnId} 
+          key={columnId}
           coreValues={this.props.coreValues} 
           columnValues={this.props.columns[columnId].coreValues}
         />
