@@ -15,7 +15,6 @@ const Container = styled.div`
   font-family: 'Optima';
 `;
 
-const CORE_VALUE_PARENT_PREFIX = 'parent-';
 const CORE_VALUE_PREFIX = 'coreValue-';
 const GROUPING_COLUMN_PREFIX = 'grouping-column-';
 const DEFAULT_NUMBER_COLUMNS = 5;
@@ -144,8 +143,21 @@ class App extends React.Component {
           }
         }
 
+        let newCoreValues = Array.from(this.state.coreValues);
+        newCoreValues = newCoreValues.map(coreValue => {
+          return (coreValue.id === draggableId)
+            ? {
+              ...coreValue,
+              hasStartedDrag: false,
+              hasCompletedDrag: true,
+              hasCanceledDrag: false
+            }
+            : coreValue
+        });
+
         newState = {
           ...this.state,
+          coreValues: newCoreValues,
           groupingColumns: {
             ...this.state.groupingColumns,
             [source.droppableId]: newStartColumn,
@@ -153,7 +165,7 @@ class App extends React.Component {
           }
         }
 
-      } else if (source.droppableId.startsWith(CORE_VALUE_PARENT_PREFIX.concat(CORE_VALUE_PREFIX))) {
+      } else {
         let newCoreValues = Array.from(this.state.coreValues);
         newCoreValues = newCoreValues.map(coreValue => {
           return (coreValue.id === draggableId)
@@ -176,7 +188,6 @@ class App extends React.Component {
         }
       }
 
-      this.setState(newState);
     } else {
       let newCoreValues = Array.from(this.state.coreValues);
       newCoreValues = newCoreValues.map(coreValue => {
@@ -188,12 +199,13 @@ class App extends React.Component {
             hasCanceledDrag: true
           } : coreValue
       });
-      const newState = {
+      newState = {
         ...this.state,
         coreValues: newCoreValues,
       }
-      this.setState(newState);
     }
+
+    this.setState(newState);
   };
 
   render() {

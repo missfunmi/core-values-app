@@ -2,9 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 
-const Container = styled.div``;
-
-const Button = styled.div`
+const Bubble = styled.div`
   text-align: center;
   border-radius: 20px;
   padding: 6px 25px;
@@ -33,14 +31,13 @@ class CoreValue extends React.Component {
     const isDragDisabled = !currentlySelected;
 
     return (
-      <Container>
         <Draggable
           draggableId={this.props.coreValueId}
           index={this.props.index}
           isDragDisabled={isDragDisabled}
         >
           {(provided, snapshot) => (
-            <Button
+            <Bubble
               onClick={() => this.handleClick(this.props.text)}
               selected={currentlySelected}
               ref={provided.innerRef}
@@ -48,10 +45,9 @@ class CoreValue extends React.Component {
               {...provided.dragHandleProps}
             >
               {this.props.text}
-            </Button>
+            </Bubble>
           )}
         </Draggable>
-      </Container>
     )
   }
 }

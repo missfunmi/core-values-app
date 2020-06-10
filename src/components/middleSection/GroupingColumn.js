@@ -37,7 +37,7 @@ class GroupingColumn extends React.Component {
   render() {
     const columnId = this.props.columnId;
     const columnValues = this.props.columnValues ? this.props.columnValues : [];
-    const isSelected = false;
+    const isSelected = true;
     return (
       <Droppable droppableId={columnId} key={columnId}>
         {(provided, snapshot) => (
@@ -48,8 +48,9 @@ class GroupingColumn extends React.Component {
           >
             <InnerColumn>
               {columnValues.map((columnValue, index) => (
-                <CoreValueWrapper key={index}>
+                <CoreValueWrapper key={columnValue}>
                   <CoreValue
+                    key={columnValue}
                     index={index}
                     coreValueId={columnValue}
                     text={this.coreValueText(columnValue)}
