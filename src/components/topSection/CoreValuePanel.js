@@ -16,8 +16,6 @@ const CoreValueParent = styled.div`
   background-color: #ffffff;
   text-align: center;
   border-radius: 20px;
-  margin-bottom: 10px;
-  margin-right: 5px;
   cursor: pointer;
   display: flex;
 `;
@@ -29,8 +27,8 @@ const CoreValueWrapper = styled.div`
 const Placeholder = styled.div`
   text-align: center;
   border-radius: 20px;
-  padding: 6px 25px;
-  margin: 0;
+  padding: 6px 18px;
+  margin: 5px 2px;
   color: #d3d3d3;
   background-color: #f9f9f9;
   border: 2px dashed #d3d3d3;

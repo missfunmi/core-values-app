@@ -15,6 +15,7 @@ const Container = styled.div`
   font-family: 'Optima';
 `;
 
+const CORE_VALUE_PARENT_PREFIX = 'parent-';
 const CORE_VALUE_PREFIX = 'coreValue-';
 const GROUPING_COLUMN_PREFIX = 'grouping-column-';
 const DEFAULT_NUMBER_COLUMNS = 5;
@@ -85,7 +86,12 @@ class App extends React.Component {
   // TODO - Clean this up
   onDragEnd = (result) => {
     const { destination, source, draggableId, reason } = result;
-    if (!destination || reason === 'CANCEL') {
+    if (!destination
+        || reason === 'CANCEL' 
+        || (destination.droppableId === source.droppableId
+          && destination.index === source.index
+          && destination.droppableId.startsWith(CORE_VALUE_PARENT_PREFIX))
+    ) {
       let newCoreValues = Array.from(this.state.coreValues);
       newCoreValues = newCoreValues.map(coreValue => {
         return (coreValue.id === draggableId)

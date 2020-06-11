@@ -5,8 +5,8 @@ import { Draggable } from 'react-beautiful-dnd';
 const Bubble = styled.div`
   text-align: center;
   border-radius: 20px;
-  padding: 6px 25px;
-  margin: 0;
+  padding: 6px 18px;
+  margin: 5px 2px;
   cursor: pointer;
   display: block;
   color: ${props => (props.selected ? '#ffffff' : '#798da3')};
