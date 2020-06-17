@@ -21,11 +21,6 @@ class CoreValue extends React.Component {
     }
   }
 
-  draggableId(index) {
-    const draggableId = 'core-value-parent-'.concat(index);
-    return draggableId;
-  };
-
   render() {
     const currentlySelected = this.props.selected;
     const isDragDisabled = !currentlySelected;
@@ -33,6 +28,7 @@ class CoreValue extends React.Component {
     return (
         <Draggable
           draggableId={this.props.coreValueId}
+          key={this.props.coreValueId}
           index={this.props.index}
           isDragDisabled={isDragDisabled}
         >

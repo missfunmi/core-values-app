@@ -9,8 +9,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 93%;
-  padding: 50px;
+  width: 95%;
+  padding: 10px;
 `;
 
 class MiddleSection extends React.Component {

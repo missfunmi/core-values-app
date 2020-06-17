@@ -35,7 +35,7 @@ const Placeholder = styled.div`
   display: ${props => (props.hasStartedDrag || props.hasCompletedDrag ? 'block' : 'none')};
 `;
 
-const DROPPABLE_ID_PREFIX = 'parent-';
+const CORE_VALUE_DROPPABLE_PREFIX = 'parent-';
 
 class CoreValuePanel extends React.Component {
   isSelected(coreValue) {
@@ -51,8 +51,8 @@ class CoreValuePanel extends React.Component {
       <Container>
         {coreValues.map((coreValue, index) => (
           <Droppable
-            droppableId={`${DROPPABLE_ID_PREFIX}${coreValue.id}`}
-            key={coreValue.id}
+            droppableId={`${CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
+            key={`${CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
             isDropDisabled={isDropDisabled}
           >
             {(provided) => (
