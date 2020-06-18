@@ -64,23 +64,9 @@ class App extends React.Component {
 
   onBeforeDragStart = (start) => {
     const { draggableId } = start;
-    if (draggableId.startsWith(CORE_VALUE_PREFIX) 
-        || draggableId.startsWith(CORE_VALUE_SWAPPED_PREFIX)) {
-      let newCoreValues = Array.from(this.state.coreValues);
-      newCoreValues = newCoreValues.map(coreValue => {
-        return (coreValue.id === draggableId)
-          ? {
-            ...coreValue,
-            hasStartedDrag: true,
-            hasCompletedDrag: false,
-            hasCanceledDrag: false
-          } : coreValue
-      });
-
-      const newState = {
-        ...this.state,
-        coreValues: newCoreValues
-      }
+    if (draggableId.startsWith(CORE_VALUE_PREFIX) || draggableId.startsWith(CORE_VALUE_SWAPPED_PREFIX)) {
+      const newCoreValues = this.updateCoreValuesState(draggableId, true, false, false);
+      const newState = { ...this.state, coreValues: newCoreValues }
       this.setState(newState);
     }
   }
@@ -89,46 +75,31 @@ class App extends React.Component {
 
   // TODO - Clean this up
   onDragEnd = (result) => {
-    const { destination, source, draggableId, reason } = result;
+    const { destination, source, draggableId } = result;
     console.log(`result is: ${JSON.stringify(result)}`);
 
-    if (destination.droppableId === source.droppableId
+    if (destination 
+      && destination.droppableId === source.droppableId
       && destination.index === source.index
-      && destination.droppableId.startsWith(GROUPING_COLUMN_DROPPABLE_PREFIX)) {
-        let newCoreValues = Array.from(this.state.coreValues);
-        newCoreValues = newCoreValues.map(coreValue => {
-          return (coreValue.id === draggableId)
-            ? {
-              ...coreValue,
-              hasStartedDrag: false,
-              hasCompletedDrag: true,
-              hasCanceledDrag: false
-            } : coreValue
-        });
-  
-        const newState = {
-          ...this.state,
-          coreValues: newCoreValues
-        }
-        this.setState(newState);
+      && source.droppableId.startsWith(GROUPING_COLUMN_DROPPABLE_PREFIX)) {
+      // Condition 2b, i.e. source = destination = column & index unchanged
+      const newCoreValues = this.updateCoreValuesState(draggableId, false, true, false);
+      const newState = { ...this.state, coreValues: newCoreValues }
+      this.setState(newState);
       return;
     }
 
     if (!destination 
-        && source.droppableId.startsWith(GROUPING_COLUMN_DROPPABLE_PREFIX)
-    ) {
+        && source.droppableId.startsWith(GROUPING_COLUMN_DROPPABLE_PREFIX)) {
+      // Condition 1b, i.e. no destination and source = column
       let startColumn = this.state.groupingColumns[source.droppableId];
-      const startColumnCoreValues = Array.from(startColumn.coreValues);
+      let startColumnCoreValues = Array.from(startColumn.coreValues);
       startColumnCoreValues.splice(source.index, 1);
-      let newStartColumn = {
-        ...startColumn,
-        coreValues: startColumnCoreValues
-      }
 
-      // Q: Why use a 'swappedId' when dropping back into the main panel? 
-      // A: Because of how mounting & diffing works in React. See https://stackoverflow.com/a/35793185
-      let coreVals = Array.from(this.state.coreValues);
-      let newCoreValues = coreVals.map(coreValue => {
+      // Q: Why swap Ids when dropping back into the main panel? 
+      // A: Because of how mounting & diffing works in React. 
+      // See https://stackoverflow.com/a/35793185 and https://stackoverflow.com/a/48451229
+      const newCoreValues = Array.from(this.state.coreValues, coreValue => {
         return (coreValue.id === draggableId)
           ? {
             ...coreValue,
@@ -147,7 +118,7 @@ class App extends React.Component {
         coreValues: newCoreValues,
         groupingColumns: {
           ...this.state.groupingColumns,
-          [source.droppableId]: newStartColumn,
+          [source.droppableId]: { ...startColumn, coreValues: startColumnCoreValues },
         }
       }
 
@@ -156,128 +127,53 @@ class App extends React.Component {
     }
 
     if (!destination
-        || reason === 'CANCEL' 
-        || (destination.droppableId === source.droppableId
+        || (destination 
+          && destination.droppableId === source.droppableId
           && destination.index === source.index
-          && destination.droppableId.startsWith(CORE_VALUE_DROPPABLE_PREFIX))
+          && source.droppableId.startsWith(CORE_VALUE_DROPPABLE_PREFIX))
     ) {
-      let newCoreValues = Array.from(this.state.coreValues);
-      newCoreValues = newCoreValues.map(coreValue => {
-        return (coreValue.id === draggableId)
-          ? {
-            ...coreValue,
-            hasStartedDrag: false,
-            hasCompletedDrag: false,
-            hasCanceledDrag: true
-          }
-          : coreValue
-      });
-      const newState = {
-        ...this.state,
-        coreValues: newCoreValues
-      }
-
+      // Condition 1a, i.e. no destination and source = coreValuePanel
+      // Condition 2a, i.e. source = destination = coreValuePanel & index unchanged
+      const newCoreValues = this.updateCoreValuesState(draggableId, false, false, true);
+      const newState = { ...this.state, coreValues: newCoreValues }
       this.setState(newState);
       return;
     }
 
-    let newState = { ...this.state }
-
     if (destination.droppableId.startsWith(GROUPING_COLUMN_DROPPABLE_PREFIX)) {
-      let destinationColumn = this.state.groupingColumns[destination.droppableId];
-      const destinationColumnCoreValues = Array.from(destinationColumn.coreValues);
-      destinationColumnCoreValues.splice(destination.index, 0, draggableId);
-      let newDestinationColumn = {
-        ...destinationColumn,
-        coreValues: destinationColumnCoreValues
-      }
-
-      let startColumn;
-      let newStartColumn;
-      if (source.droppableId.startsWith(GROUPING_COLUMN_DROPPABLE_PREFIX)) {
-        startColumn = this.state.groupingColumns[source.droppableId];
-
-        if (startColumn === destinationColumn) {
-          const destinationColumnCoreValues = Array.from(destinationColumn.coreValues);
-          destinationColumnCoreValues.splice(source.index, 1);
-          destinationColumnCoreValues.splice(destination.index, 0, draggableId);
-          newDestinationColumn = {
-            ...destinationColumn,
-            coreValues: destinationColumnCoreValues
-          }
-        } else {
-          const startColumnCoreValues = Array.from(startColumn.coreValues);
-          startColumnCoreValues.splice(source.index, 1);
-          newStartColumn = {
-            ...startColumn,
-            coreValues: startColumnCoreValues
-          }
-        }
-
-        let newCoreValues = Array.from(this.state.coreValues);
-        newCoreValues = newCoreValues.map(coreValue => {
-          return (coreValue.id === draggableId)
-            ? {
-              ...coreValue,
-              hasStartedDrag: false,
-              hasCompletedDrag: true,
-              hasCanceledDrag: false
-            }
-            : coreValue
-        });
-
-        newState = {
-          ...this.state,
-          coreValues: newCoreValues,
-          groupingColumns: {
-            ...this.state.groupingColumns,
-            [source.droppableId]: newStartColumn,
-            [destination.droppableId]: newDestinationColumn
-          }
-        }
-
-      } else {
-        let newCoreValues = Array.from(this.state.coreValues);
-        newCoreValues = newCoreValues.map(coreValue => {
-          return (coreValue.id === draggableId)
-            ? {
-              ...coreValue,
-              hasStartedDrag: false,
-              hasCompletedDrag: true,
-              hasCanceledDrag: false
-            }
-            : coreValue
-        });
-
-        newState = {
-          ...this.state,
-          coreValues: newCoreValues,
-          groupingColumns: {
-            ...this.state.groupingColumns,
-            [destination.droppableId]: newDestinationColumn
-          }
-        }
-      }
-
-    } else {
-      let newCoreValues = Array.from(this.state.coreValues);
-      newCoreValues = newCoreValues.map(coreValue => {
-        return (coreValue.id === draggableId)
-          ? {
-            ...coreValue,
-            hasStartedDrag: false,
-            hasCompletedDrag: false,
-            hasCanceledDrag: true
-          } : coreValue
-      });
-      newState = {
+      // Condition 3, i.e. master logic
+      const startColumn = this.state.groupingColumns[source.droppableId];
+      const finishColumn = this.state.groupingColumns[destination.droppableId];
+      
+      let startColumnCoreValues = startColumn ? Array.from(startColumn.coreValues) : [];
+      let finishColumnCoreValues = Array.from(finishColumn.coreValues);
+      
+      (startColumn === finishColumn) 
+        ? finishColumnCoreValues.splice(source.index, 1) // drag within same column, remove element from finish column
+        : startColumnCoreValues.splice(source.index, 1); // drag to new column, remove element from start column 
+      finishColumnCoreValues.splice(destination.index, 0, draggableId); // insert element into finish column between position index-1 and index+1
+      
+      const newState = {
         ...this.state,
-        coreValues: newCoreValues,
+        coreValues: this.updateCoreValuesState(draggableId, false, true, false),
+        groupingColumns: {
+          ...this.state.groupingColumns,
+          ...(startColumn && { [source.droppableId]: { ...startColumn, coreValues: startColumnCoreValues } }),
+          [destination.droppableId]: { ...finishColumn, coreValues: finishColumnCoreValues }
+        }
       }
-    }
 
-    this.setState(newState);
+      this.setState(newState);
+    }
   };
+
+  updateCoreValuesState(coreValueId, hasStartedDrag, hasCompletedDrag, hasCanceledDrag) {
+    return Array.from(this.state.coreValues, coreValue => {
+      return (coreValue.id === coreValueId)
+        ? { ...coreValue, hasStartedDrag, hasCompletedDrag, hasCanceledDrag }
+        : coreValue;
+    });
+  }
 
   render() {
     return (
