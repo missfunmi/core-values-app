@@ -7,10 +7,11 @@
 
 ## Investigate issues
 - [x] Animation for dropping into the group column is bad, the bubble snaps to top left corner first before the flex center styling applies. How to fix? [Identical issue](https://github.com/atlassian/react-beautiful-dnd/issues/1851)
-- [ ] What's going on with this scroll-linked position error? 
+- [ ] What's going on with this scroll-linked position error?
   ````
   This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://developer.mozilla.org/docs/Mozilla/Performance/ScrollLinkedEffects for further details and to join the discussion on related tools and features!
   ````
+- [ ] Dragging outside of the column snaps back to column first before appearing in core values panel
 
 ## Performance
 - [ ] Do not re-render other draggables during/after the drag. See [here](https://github.com/atlassian/react-beautiful-dnd/issues/1791)
@@ -23,16 +24,18 @@
 - [ ] Add ability to add new columns
 - [ ] Double click to select main value
 - [ ] Tooltips
+- [ ] Tests
 - [ ] Landing page
 - [ ] Scroll to sections on button click
 - [ ] Add a reset button to clear all grouped items back to the main panel
+- [ ] Set core values back to unselected in grouping column but still allow dragging?
 - [ ] Use onDragStart to toggle isDropDisabled on the main panel? [See here](https://react-beautiful-dnd.netlify.app/?path=/story/ondragstart--toggle-isdropdisabled-ondragstart)
 - [ ] Add routes
-- [ ] Set core values back to unselected in grouping column but still allow dragging?
+- [ ] Logging library
 
 ## Refactor
 - [ ] Make coreValue object into a class with initial values?
-- [ ] Refatcor onDragEnd function
+- [x] Refactor onDragEnd function
 - [ ] Organize files in sensible directory structure
 
 ## Future

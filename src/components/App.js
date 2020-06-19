@@ -15,7 +15,6 @@ const Container = styled.div`
   font-family: 'Optima';
 `;
 
-const CORE_VALUE_DROPPABLE_PREFIX = 'parent-';
 const CORE_VALUE_PREFIX = 'coreValue-';
 const CORE_VALUE_SWAPPED_PREFIX = 'swapped-coreValue-';
 const GROUPING_COLUMN_DROPPABLE_PREFIX = 'grouping-column-';
@@ -34,11 +33,8 @@ class App extends React.Component {
   initializeCoreValuesState() {
     return valuesData.map((coreValue, index) => {
       const coreValueId = CORE_VALUE_PREFIX.concat(index);
-      // TODO - Fix this
-      const swappedId = CORE_VALUE_SWAPPED_PREFIX.concat(index);
       return {
         id: coreValueId,
-        swappedId: swappedId,
         positionInList: index,
         text: coreValue,
         hasStartedDrag: false,
@@ -100,8 +96,6 @@ class App extends React.Component {
   }
 
   updateStateForCanceledSourceDrop(source, draggableId) {
-    // Return draggable to core value panel
-
     if (!this.isGroupingColumn(source.droppableId)) {
       const newCoreValues = this.updateCoreValue(draggableId, false, false, true);
       const newState = { ...this.state, coreValues: newCoreValues }
@@ -112,10 +106,9 @@ class App extends React.Component {
     let startColumnCoreValues = Array.from(startColumn.coreValues);
     startColumnCoreValues.splice(source.index, 1);
     
-    const newCoreValues = this.resetCoreValue(draggableId);
     const newState = {
       ...this.state,
-      coreValues: newCoreValues,
+      coreValues: this.resetCoreValue(draggableId),
       groupingColumns: {
         ...this.state.groupingColumns,
         [source.droppableId]: { ...startColumn, coreValues: startColumnCoreValues },
@@ -126,8 +119,6 @@ class App extends React.Component {
   }
 
   updateStateForNoopDestinationDrop(destination, draggableId) {
-    // Update core values in main panel based on destination columns
-
     const newCoreValues = 
       this.isGroupingColumn(destination.droppableId)
         ? this.updateCoreValue(draggableId, false, true, false)
@@ -138,18 +129,19 @@ class App extends React.Component {
 
   onBeforeDragStart = (start) => {
     const { draggableId } = start;
-    if (draggableId.startsWith(CORE_VALUE_PREFIX) || draggableId.startsWith(CORE_VALUE_SWAPPED_PREFIX)) {
-      const newCoreValues = this.updateCoreValue(draggableId, true, false, false);
-      const newState = { ...this.state, coreValues: newCoreValues }
-      this.setState(newState);
-    }
+    const newCoreValues = this.updateCoreValue(draggableId, true, false, false);
+    const newState = { ...this.state, coreValues: newCoreValues }
+    this.setState(newState);
   }
 
-  onDragUpdate = (update, destination) => { }
+  onDragUpdate = (update) => { 
+    const { destination, source, draggableId } = update;
+    console.log(`source is:\n${JSON.stringify(source, null, 2)},\ndestination is:\n${JSON.stringify(destination, null, 2)}`);
+  }
 
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
-    console.log(`result is: ${JSON.stringify(result)}`);
+    console.log(`result is:\n${JSON.stringify(result, null, 2)}`);
     
     if (!destination) {
       this.setState(this.updateStateForCanceledSourceDrop(source, draggableId));
@@ -183,7 +175,7 @@ class App extends React.Component {
       coreValues: this.updateCoreValue(draggableId, false, true, false),
       groupingColumns: {
         ...this.state.groupingColumns,
-        ...(startColumn && { [source.droppableId]: { ...startColumn, coreValues: startColumnCoreValues } }),
+        ...((startColumn && startColumn !== finishColumn) && { [source.droppableId]: { ...startColumn, coreValues: startColumnCoreValues } }),
         [destination.droppableId]: { ...finishColumn, coreValues: finishColumnCoreValues }
       }
     }
@@ -194,8 +186,9 @@ class App extends React.Component {
   render() {
     return (
       <DragDropContext
-        onDragEnd={this.onDragEnd}
         onBeforeDragStart={this.onBeforeDragStart}
+        onDragUpdate={this.onDragUpdate}
+        onDragEnd={this.onDragEnd}
       >
         <Container>
           <TopSection
