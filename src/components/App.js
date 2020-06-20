@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
-import TopSection from './topSection/TopSection';
-import MiddleSection from './middleSection/MiddleSection';
-import BottomSection from './bottomSection/BottomSection';
+import TopSection from './sectionA/TopSection';
+import MiddleSection from './sectionB/MiddleSection';
+import BottomSection from './sectionC/BottomSection';
 import valuesData from '../values-data';
 
 const Container = styled.div`
@@ -13,7 +13,6 @@ const Container = styled.div`
   align-items: center;
   width: 99%;
   font-family: 'Optima';
-  /* font-family: 'Helvetica Neue'; */
 `;
 
 const CORE_VALUE_PREFIX = 'coreValue-';
