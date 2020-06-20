@@ -25,6 +25,7 @@
 - [ ] Double click to select main value
 - [ ] Tooltips
 - [ ] Tests
+- [ ] Google font
 - [ ] Landing page
 - [ ] Scroll to sections on button click
 - [ ] Add a reset button to clear all grouped items back to the main panel
@@ -32,6 +33,7 @@
 - [ ] Use onDragStart to toggle isDropDisabled on the main panel? [See here](https://react-beautiful-dnd.netlify.app/?path=/story/ondragstart--toggle-isdropdisabled-ondragstart)
 - [ ] Add routes
 - [ ] Logging library
+- [ ] License
 
 ## Refactor
 - [ ] Make coreValue object into a class with initial values?

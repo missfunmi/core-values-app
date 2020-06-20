@@ -13,6 +13,7 @@ const Container = styled.div`
   align-items: center;
   width: 99%;
   font-family: 'Optima';
+  /* font-family: 'Helvetica Neue'; */
 `;
 
 const CORE_VALUE_PREFIX = 'coreValue-';
