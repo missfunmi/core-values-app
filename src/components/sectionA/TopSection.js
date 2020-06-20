@@ -15,41 +15,22 @@ const Container = styled.div`
 `;
 
 class TopSection extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selections: [],
-    };
-    this.updateSelections = this.updateSelections.bind(this);
-  }
-
-  // TODO update logic to use splice
-  updateSelections(selection) {
-    const updatedSelections = Array.from(this.state.selections);
-    if (updatedSelections.includes(selection)) {
-      const indexToRemove = updatedSelections.indexOf(selection);
-      updatedSelections.splice(indexToRemove, 1);
-    } else {
-      updatedSelections.push(selection);
-      updatedSelections.sort();
-    }
-    this.setState({
-      selections: updatedSelections
-    });
-  }
-
   render() {
+    const selections = this.props.selections;
+    const isDoneSelecting = true; // TODO
+    // const update = this.props.updateSelections;
+    // console.log(`in TopSection,  updateSelections: ${update}`);
     return (
       <Container>
         <Header/>
         <CoreValuePanel 
           coreValues={this.props.coreValues}
-          selections={this.state.selections}
-          updateSelections={this.updateSelections}
+          selections={selections}
+          updateSelections={this.props.updateSelections}
         />
         <ContinueButton 
-          selections={this.state.selections} 
-          shouldActivate={this.props.isDoneSelecting}/>
+          selections={selections} 
+          shouldActivate={isDoneSelecting}/>
       </Container>
     );
   }

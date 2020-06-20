@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
-import CoreValue from '../sectionA/CoreValue';
+import CoreValue from '../common/CoreValue';
 
 const Column = styled.div`
   margin: 8px;

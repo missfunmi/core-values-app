@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// TODO - make a common component for this sectiona and top section
 const Button = styled.div`
-  border: 2px solid #c9d3dd;
-  background-color: #c9d3dd;
   color: #ffffff;
   border-radius: 24px;
   margin-top: 10px;
@@ -18,14 +15,11 @@ const Button = styled.div`
 
 class ContinueButton extends React.Component {
   handleClick() {
-    const shouldActivate = this.props.shouldActivate;
-    // TODO: Lock the selections, do not allow them to be modified
-    // Load the middle panel
+    // TODO: Load the bottom panel
   }
 
   render() {
-    const selections = [];
-    const isEnabled = selections.length;
+    const isEnabled = this.props.shouldActivate;
 
     return (
       <Button 

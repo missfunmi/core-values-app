@@ -16,6 +16,7 @@
 ## Performance
 - [ ] Do not re-render other draggables during/after the drag. See [here](https://github.com/atlassian/react-beautiful-dnd/issues/1791)
 - [ ] Allow dragging between grouping columns without affecting state in the core values main panel
+- [ ] Columns are rendered twice on page load
 
 ## Build
 - [x] Properly reorder items in grouping columns after drop
@@ -29,7 +30,7 @@
 - [ ] Landing page
 - [ ] Scroll to sections on button click
 - [ ] Add a reset button to clear all grouped items back to the main panel
-- [ ] Set core values back to unselected in grouping column but still allow dragging?
+- [x] Set core values back to unselected in grouping column but still allow dragging?
 - [ ] Use onDragStart to toggle isDropDisabled on the main panel? [See here](https://react-beautiful-dnd.netlify.app/?path=/story/ondragstart--toggle-isdropdisabled-ondragstart)
 - [ ] Add routes
 - [ ] Logging library

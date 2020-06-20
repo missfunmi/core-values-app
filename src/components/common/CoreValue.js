@@ -34,7 +34,8 @@ class CoreValue extends React.Component {
         >
           {(provided, snapshot) => (
             <Bubble
-              onClick={() => this.handleClick(this.props.text)}
+              // onClick={() => this.handleClick(this.props.text)}
+              onClick={() => this.handleClick(this.props.coreValueId)}
               selected={currentlySelected}
               ref={provided.innerRef}
               {...provided.draggableProps}

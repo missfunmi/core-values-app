@@ -15,9 +15,8 @@ const Button = styled.div`
 
 class ContinueButton extends React.Component {
   handleClick() {
-    const shouldActivate = this.props.shouldActivate;
-    // TODO: Lock the selections, do not allow them to be modified
-    // Load the middle panel
+    // TODO: Lock the selections?
+    // TODO: Load the middle panel
   }
 
   render() {

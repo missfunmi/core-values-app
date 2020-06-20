@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
-import CoreValue from './CoreValue';
+import CoreValue from '../common/CoreValue';
 
 const Container = styled.div`
   border: none;
@@ -76,7 +76,8 @@ class CoreValuePanel extends React.Component {
                     index={index}
                     coreValueId={coreValue.id}
                     text={coreValue.text}
-                    selected={this.isSelected(coreValue.text)}
+                    // selected={this.isSelected(coreValue.text)}
+                    selected={this.isSelected(coreValue.id)}
                     updateSelections={this.props.updateSelections}
                   />
                 </CoreValueWrapper>

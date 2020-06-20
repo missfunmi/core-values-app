@@ -23,8 +23,9 @@ const DEFAULT_NUMBER_COLUMNS = 5;
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.updateSelections = this.updateSelections.bind(this);
     this.state = {
-      isTopPanelDoneSelecting: false,
+      selections: [],
       coreValues: this.initializeCoreValuesState(),
       groupingColumns: this.initializeGroupingColumnsState()
     }
@@ -56,6 +57,23 @@ class App extends React.Component {
       }
     }
     return groupingColumns;
+  }
+
+  updateSelections(selection) {
+    // TODO update logic to use splice
+    const updatedSelections = Array.from(this.state.selections);
+    if (updatedSelections.includes(selection)) {
+      const indexToRemove = updatedSelections.indexOf(selection);
+      updatedSelections.splice(indexToRemove, 1);
+    } else {
+      updatedSelections.push(selection);
+      updatedSelections.sort();
+    }
+    const newState = {
+      ...this.state,
+      selections: updatedSelections
+    }
+    this.setState(newState);
   }
 
   updateCoreValue(coreValueId, hasStartedDrag, hasCompletedDrag, hasCanceledDrag) {
@@ -101,6 +119,12 @@ class App extends React.Component {
       const newState = { ...this.state, coreValues: newCoreValues }
       return newState;
     }
+
+    let updatedSelections = Array.from(this.state.selections);
+    if (updatedSelections.includes(draggableId)) {
+      const indexToRemove = updatedSelections.indexOf(draggableId);
+      updatedSelections.splice(indexToRemove, 1);
+    } 
     
     let startColumn = this.state.groupingColumns[source.droppableId];
     let startColumnCoreValues = Array.from(startColumn.coreValues);
@@ -108,6 +132,7 @@ class App extends React.Component {
     
     const newState = {
       ...this.state,
+      selections: updatedSelections,
       coreValues: this.resetCoreValue(draggableId),
       groupingColumns: {
         ...this.state.groupingColumns,
@@ -136,13 +161,11 @@ class App extends React.Component {
 
   onDragUpdate = (update) => { 
     const { destination, source, draggableId } = update;
-    console.log(`source is:\n${JSON.stringify(source, null, 2)},\ndestination is:\n${JSON.stringify(destination, null, 2)}`);
+    // console.log(`draggableId is: ${draggableId}\nsource is:\n${JSON.stringify(source, null, 2)},\ndestination is:\n${JSON.stringify(destination, null, 2)}`);
   }
 
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
-    console.log(`result is:\n${JSON.stringify(result, null, 2)}`);
-    
     if (!destination) {
       this.setState(this.updateStateForCanceledSourceDrop(source, draggableId));
       return;
@@ -193,9 +216,14 @@ class App extends React.Component {
         <Container>
           <TopSection
             coreValues={this.state.coreValues}
-            isDoneSelecting={this.state.isTopPanelDoneSelecting}
+            selections={this.state.selections}
+            updateSelections={this.updateSelections}
           />
-          <MiddleSection coreValues={this.state.coreValues} columns={this.state.groupingColumns} />
+          <MiddleSection 
+            selections={this.state.selections}
+            coreValues={this.state.coreValues} 
+            columns={this.state.groupingColumns}
+          />
           <BottomSection />
         </Container>
       </DragDropContext>
