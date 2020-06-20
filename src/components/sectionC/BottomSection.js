@@ -4,18 +4,19 @@ import FinalCoreValuePanel from './FinalCoreValuePanel';
 
 const Container = styled.div`
   text-align: center;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 93%;
   padding: 50px;
+  display: ${props => (props.hasGroupedCoreValues ? 'flex' : 'none')}; 
 `;
 
 class BottomSection extends React.Component {
   render() {
+    const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
     return (
-      <Container>
+      <Container hasGroupedCoreValues={hasGroupedCoreValues}>
         <FinalCoreValuePanel/>
       </Container>
     );

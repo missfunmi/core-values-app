@@ -23,8 +23,14 @@ const DEFAULT_NUMBER_COLUMNS = 5;
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.updateSelections = this.updateSelections.bind(this);
+    this.displayMiddleSection = this.displayMiddleSection.bind(this);
+    this.displayBottomSection = this.displayBottomSection.bind(this);
+
     this.state = {
+      hasSelectedCoreValues: false,
+      hasGroupedCoreValues: false,
       selections: [],
       coreValues: this.initializeCoreValuesState(),
       groupingColumns: this.initializeGroupingColumnsState()
@@ -74,6 +80,26 @@ class App extends React.Component {
       selections: updatedSelections
     }
     this.setState(newState);
+  }
+
+  displayMiddleSection() {
+    if (this.state.hasSelectedCoreValues) {
+      return;
+    }
+    this.setState({
+      ...this.state,
+      hasSelectedCoreValues: true
+    });
+  }
+
+  displayBottomSection() {
+    if (this.state.hasGroupedCoreValues) {
+      return;
+    }
+    this.setState({
+      ...this.state,
+      hasGroupedCoreValues: true
+    });
   }
 
   updateCoreValue(coreValueId, hasStartedDrag, hasCompletedDrag, hasCanceledDrag) {
@@ -218,13 +244,18 @@ class App extends React.Component {
             coreValues={this.state.coreValues}
             selections={this.state.selections}
             updateSelections={this.updateSelections}
+            displayMiddleSection={this.displayMiddleSection}
           />
           <MiddleSection 
+            hasSelectedCoreValues={this.state.hasSelectedCoreValues}
+            displayBottomSection={this.displayBottomSection}
             selections={this.state.selections}
             coreValues={this.state.coreValues} 
             columns={this.state.groupingColumns}
           />
-          <BottomSection />
+          <BottomSection
+            hasGroupedCoreValues={this.state.hasGroupedCoreValues}
+          />
         </Container>
       </DragDropContext>
     );

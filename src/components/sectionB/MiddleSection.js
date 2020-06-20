@@ -5,27 +5,35 @@ import ContinueButton from './ContinueButton';
 
 const Container = styled.div`
   text-align: center;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 95%;
   padding: 10px;
+  display: ${props => (props.hasSelectedCoreValues ? 'flex' : 'none')}; 
 `;
 
 class MiddleSection extends React.Component {
   render() {
+    const hasSelectedCoreValues = this.props.hasSelectedCoreValues;
     const selections = this.props.selections;
     const allColumnValues = 
       Object.values(this.props.columns)
             .reduce((accumulator, column) => accumulator.concat(column.coreValues),[]);
-    const shouldActivate = selections.length > 0 
-                          && selections.length === allColumnValues.length 
-                          && selections.every(selection => allColumnValues.includes(selection));
+    const isContinueButtonEnabled = selections.length > 0 
+                                    && selections.length === allColumnValues.length 
+                                    && selections.every(selection => allColumnValues.includes(selection));
     return (
-      <Container>
-        <GroupingColumnPanel coreValues={this.props.coreValues} columns={this.props.columns}/>
-        <ContinueButton shouldActivate={shouldActivate}/>
+      <Container hasSelectedCoreValues={hasSelectedCoreValues}>
+        <GroupingColumnPanel 
+          coreValues={this.props.coreValues} 
+          columns={this.props.columns}
+        />
+        <ContinueButton 
+          shouldActivate={isContinueButtonEnabled} 
+          displayBottomSection={this.props.displayBottomSection}
+          hasSelectedCoreValues={hasSelectedCoreValues}
+        />
       </Container>
     );
   }

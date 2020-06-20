@@ -15,17 +15,16 @@ const Button = styled.div`
 
 class ContinueButton extends React.Component {
   handleClick() {
-    // TODO: Lock the selections?
-    // TODO: Load the middle panel
+    if (this.props.displayMiddleSection) {
+      this.props.displayMiddleSection();
+    }
   }
 
   render() {
-    const selections = this.props.selections;
-    const isEnabled = selections.length;
 
     return (
       <Button 
-        enabled={isEnabled}
+        enabled={this.props.shouldActivate}
         onClick={() => this.handleClick()}
       >Continue</Button>
     );

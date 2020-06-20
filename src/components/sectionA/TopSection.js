@@ -17,9 +17,7 @@ const Container = styled.div`
 class TopSection extends React.Component {
   render() {
     const selections = this.props.selections;
-    const isDoneSelecting = true; // TODO
-    // const update = this.props.updateSelections;
-    // console.log(`in TopSection,  updateSelections: ${update}`);
+    const isContinueButtonEnabled = selections.length;
     return (
       <Container>
         <Header/>
@@ -30,7 +28,9 @@ class TopSection extends React.Component {
         />
         <ContinueButton 
           selections={selections} 
-          shouldActivate={isDoneSelecting}/>
+          shouldActivate={isContinueButtonEnabled}
+          displayMiddleSection={this.props.displayMiddleSection}
+        />
       </Container>
     );
   }

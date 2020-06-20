@@ -15,15 +15,15 @@ const Button = styled.div`
 
 class ContinueButton extends React.Component {
   handleClick() {
-    // TODO: Load the bottom panel
+    if (this.props.displayBottomSection) {
+      this.props.displayBottomSection();
+    }
   }
 
   render() {
-    const isEnabled = this.props.shouldActivate;
-
     return (
       <Button 
-        enabled={isEnabled}
+        enabled={this.props.shouldActivate}
         onClick={() => this.handleClick()}
       >Continue</Button>
     );
