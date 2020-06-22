@@ -1,11 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans:wght@300;400');
+@font-face {
+  font-family: 'open_sanslight';
+  src: url('./fonts/opensans-light-webfont.woff2') format('woff2'),
+       url('./fonts/opensans-light-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+@font-face {
+  font-family: 'open_sansregular';
+  src: url('./fonts/opensans-regular-webfont.woff2') format('woff2'),
+       url('./fonts/opensans-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'playfair_displayblack';
+  src: url('./fonts/playfairdisplay-black-webfont.woff2') format('woff2'),
+       url('./fonts/playfairdisplay-black-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'playfair_displaybold';
+  src: url('./fonts/playfairdisplay-bold-webfont.woff2') format('woff2'),
+       url('./fonts/playfairdisplay-bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 h1 {
-  font-family: 'Merriweather', serif;
-  font-weight: 700;
+  font-family: 'playfair_displaybold', serif;
+  font-size: 75px;
+}
+
+body {
+  font-family: 'open_sanslight', sans-serif;
 }

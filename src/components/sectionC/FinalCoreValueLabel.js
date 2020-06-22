@@ -5,7 +5,7 @@ const Label = styled.div`
   color: #3b4754;
   padding: 10px 18px;
   font-size: 18px;
-  font-weight: bold;
+  font-family: 'open_sansregular', sans-serif;
   width: 40%;
   text-align: left;
 `;

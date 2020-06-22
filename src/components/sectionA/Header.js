@@ -6,7 +6,6 @@ const Container = styled.div`
 `;
 const Title = styled.h1`
   padding: 8px;
-  font-size: 120px;
 `;
 const Text = styled.div`
   font-size: 14px;
