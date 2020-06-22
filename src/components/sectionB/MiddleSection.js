@@ -15,13 +15,16 @@ const Container = styled.div`
 class MiddleSection extends React.Component {
   render() {
     const hasSelectedCoreValues = this.props.hasSelectedCoreValues;
+    const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
     const selections = this.props.selections;
     const allColumnValues = 
       Object.values(this.props.columns)
             .reduce((accumulator, column) => accumulator.concat(column.coreValues),[]);
-    const isContinueButtonEnabled = selections.length > 0 
-                                    && selections.length === allColumnValues.length 
-                                    && selections.every(selection => allColumnValues.includes(selection));
+    const areAllSelectionsGrouped = selections.length > 0 
+                                      && selections.length === allColumnValues.length 
+                                      && selections.every(selection => allColumnValues.includes(selection));
+    const isContinueButtonEnabled = (areAllSelectionsGrouped && !hasGroupedCoreValues) ? true : false;
+
     return (
       <Container hasSelectedCoreValues={hasSelectedCoreValues}>
         <GroupingColumnPanel 

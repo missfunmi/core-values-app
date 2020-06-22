@@ -259,6 +259,7 @@ class App extends React.Component {
           <TopSection
             coreValues={this.state.coreValues}
             selections={this.state.selections}
+            hasSelectedCoreValues={this.state.hasSelectedCoreValues}
             updateSelections={this.updateSelections}
             displayMiddleSection={this.displayMiddleSection}
           />
@@ -268,6 +269,7 @@ class App extends React.Component {
             columns={this.state.groupingColumns}
             topFiveCoreValues={this.state.topFiveCoreValues}
             hasSelectedCoreValues={this.state.hasSelectedCoreValues}
+            hasGroupedCoreValues={this.state.hasGroupedCoreValues}
             displayBottomSection={this.displayBottomSection}
             updateTopFiveCoreValues={this.updateTopFiveCoreValues}
           />

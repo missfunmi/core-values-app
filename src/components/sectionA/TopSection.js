@@ -15,8 +15,10 @@ const Container = styled.div`
 
 class TopSection extends React.Component {
   render() {
+    const hasSelectedCoreValues = this.props.hasSelectedCoreValues;
     const selections = this.props.selections;
-    const isContinueButtonEnabled = selections.length;
+    const isContinueButtonEnabled = (selections.length && !hasSelectedCoreValues) ? true : false;
+
     return (
       <Container>
         <Header/>

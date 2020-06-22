@@ -47,6 +47,7 @@ class GroupingColumn extends React.Component {
     if (this.props.updateTopFiveCoreValues) {
       this.props.updateTopFiveCoreValues(coreValueId);
     }
+    // TODO: Also - change text to red 'x', change background color of CoreValue to pink
   }
 
   render() {

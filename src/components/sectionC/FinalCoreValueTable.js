@@ -8,6 +8,7 @@ const Container = styled.div`
   background-color: white;
   border-radius: 4px;
   width: 400px;
+  min-height: 300px;
   display: ${props => (props.topFiveCoreValues.length > 0 ? 'flex' : 'none')};
   flex-direction: column;
   padding: 10px 20px;
@@ -22,7 +23,6 @@ class FinalCoreValueTable extends React.Component {
 
   render() {
     const finalFive = this.props.topFiveCoreValues;
-    // const finalFive = selectedValuesData;
     return (
       <Container topFiveCoreValues={this.props.topFiveCoreValues}>
         {finalFive.map((coreValueId, index) => (
