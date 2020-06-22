@@ -6,7 +6,7 @@ const Container = styled.div`
   border: none;
   display: flex;
   flex-flow: row wrap;
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 `;
 
 const DEFAULT_NUMBER_COLUMNS = 5;
@@ -23,6 +23,7 @@ class GroupingColumnPanel extends React.Component {
           key={columnId}
           coreValues={this.props.coreValues} 
           columnValues={this.props.columns[columnId].coreValues}
+          updateTopFiveCoreValues={this.props.updateTopFiveCoreValues}
         />
       );
     }

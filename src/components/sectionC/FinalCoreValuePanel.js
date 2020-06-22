@@ -14,7 +14,10 @@ class FinalCoreValuePanel extends React.Component {
   render() {
     return (
       <Container>
-        <FinalCoreValueTable/>
+        <FinalCoreValueTable
+          coreValues={this.props.coreValues}
+          topFiveCoreValues={this.props.topFiveCoreValues}
+        />
       </Container>
     );
   }

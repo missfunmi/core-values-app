@@ -5,8 +5,8 @@ import { Draggable } from 'react-beautiful-dnd';
 const Bubble = styled.div`
   text-align: center;
   border-radius: 20px;
-  padding: 6px 18px;
-  margin: 5px 2px;
+  padding: 3px 8px;
+  margin: 3px 2px;
   cursor: pointer;
   display: block;
   color: ${props => (props.selected ? '#ffffff' : '#798da3')};
@@ -34,7 +34,6 @@ class CoreValue extends React.Component {
         >
           {(provided, snapshot) => (
             <Bubble
-              // onClick={() => this.handleClick(this.props.text)}
               onClick={() => this.handleClick(this.props.coreValueId)}
               selected={currentlySelected}
               ref={provided.innerRef}

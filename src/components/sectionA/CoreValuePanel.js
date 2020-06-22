@@ -8,7 +8,6 @@ const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  padding: 20px;
 `;
 
 const CoreValueParent = styled.div`
@@ -27,8 +26,8 @@ const CoreValueWrapper = styled.div`
 const Placeholder = styled.div`
   text-align: center;
   border-radius: 20px;
-  padding: 6px 18px;
-  margin: 5px 2px;
+  padding: 3px 8px;
+  margin: 3px 2px;
   color: #d3d3d3;
   background-color: #f9f9f9;
   border: 2px dashed #d3d3d3;

@@ -11,7 +11,7 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 99%;
+  width: 100%;
   font-family: 'Optima';
 `;
 
@@ -27,11 +27,13 @@ class App extends React.Component {
     this.updateSelections = this.updateSelections.bind(this);
     this.displayMiddleSection = this.displayMiddleSection.bind(this);
     this.displayBottomSection = this.displayBottomSection.bind(this);
+    this.updateTopFiveCoreValues = this.updateTopFiveCoreValues.bind(this);
 
     this.state = {
       hasSelectedCoreValues: false,
       hasGroupedCoreValues: false,
       selections: [],
+      topFiveCoreValues: [],
       coreValues: this.initializeCoreValuesState(),
       groupingColumns: this.initializeGroupingColumnsState()
     }
@@ -65,8 +67,22 @@ class App extends React.Component {
     return groupingColumns;
   }
 
+  updateTopFiveCoreValues(coreValueId) {
+    let topFiveCoreValues = Array.from(this.state.topFiveCoreValues);
+    if (topFiveCoreValues.includes(coreValueId)) {
+      const indexToRemove = topFiveCoreValues.indexOf(coreValueId);
+      topFiveCoreValues.splice(indexToRemove, 1);
+    } else {
+      topFiveCoreValues.push(coreValueId);
+    }
+    const newState = {
+      ...this.state,
+      topFiveCoreValues: topFiveCoreValues
+    }
+    this.setState(newState);
+  }
+
   updateSelections(selection) {
-    // TODO update logic to use splice
     const updatedSelections = Array.from(this.state.selections);
     if (updatedSelections.includes(selection)) {
       const indexToRemove = updatedSelections.indexOf(selection);
@@ -247,13 +263,17 @@ class App extends React.Component {
             displayMiddleSection={this.displayMiddleSection}
           />
           <MiddleSection 
+            coreValues={this.state.coreValues} 
+            selections={this.state.selections}
+            columns={this.state.groupingColumns}
+            topFiveCoreValues={this.state.topFiveCoreValues}
             hasSelectedCoreValues={this.state.hasSelectedCoreValues}
             displayBottomSection={this.displayBottomSection}
-            selections={this.state.selections}
-            coreValues={this.state.coreValues} 
-            columns={this.state.groupingColumns}
+            updateTopFiveCoreValues={this.updateTopFiveCoreValues}
           />
           <BottomSection
+            coreValues={this.state.coreValues}
+            topFiveCoreValues={this.state.topFiveCoreValues}
             hasGroupedCoreValues={this.state.hasGroupedCoreValues}
           />
         </Container>

@@ -44,3 +44,6 @@
 ## Future
 - Can grouping column contents be centered? May require more complex CSS or animation finagling. [See here](https://github.com/atlassian/react-beautiful-dnd/issues/1851)
 - [ ] Dragging outside of the column snaps back to column first before appearing in core values panel
+
+## Funsies
+- [ ] Add animation on selecting in top panel

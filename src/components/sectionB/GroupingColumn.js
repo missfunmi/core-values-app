@@ -23,6 +23,19 @@ const InnerColumn = styled.div`
   flex-direction: column;
 `;
 
+const ColumnRow = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Selecter = styled.div`
+  color: #3d8af7;
+  margin-left: 5px;
+  font-size: 20px;
+  margin-top: 3px;
+  cursor: pointer;
+`
+
 class GroupingColumn extends React.Component {
   coreValueText(coreValueId) {
     const coreValues = this.props.coreValues;
@@ -30,10 +43,17 @@ class GroupingColumn extends React.Component {
     return coreValue.text;
   }
 
+  handleClick(coreValueId) {
+    if (this.props.updateTopFiveCoreValues) {
+      this.props.updateTopFiveCoreValues(coreValueId);
+    }
+  }
+
   render() {
     const columnId = this.props.columnId;
     const columnValues = this.props.columnValues ? this.props.columnValues : [];
     const isSelected = true;
+
     return (
       <Droppable droppableId={columnId} key={columnId}>
         {(provided, snapshot) => (
@@ -44,13 +64,19 @@ class GroupingColumn extends React.Component {
           >
             <InnerColumn>
               {columnValues.map((columnValue, index) => (
-                <CoreValue
-                  key={columnValue}
-                  index={index}
-                  coreValueId={columnValue}
-                  text={this.coreValueText(columnValue)}
-                  selected={isSelected}
-                />
+                <ColumnRow>
+                  <CoreValue
+                    key={columnValue}
+                    index={index}
+                    coreValueId={columnValue}
+                    text={this.coreValueText(columnValue)}
+                    selected={isSelected}
+                    updateTopFiveCoreValues={this.props.updateTopFiveCoreValues}
+                  />
+                  <Selecter
+                    onClick={() => this.handleClick(columnValue)}
+                  >+</Selecter>
+                </ColumnRow>
               ))}
               {provided.placeholder}
             </InnerColumn>

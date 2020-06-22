@@ -7,8 +7,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 93%;
-  padding: 50px;
+  width: 100%;
   display: ${props => (props.hasGroupedCoreValues ? 'flex' : 'none')}; 
 `;
 
@@ -17,7 +16,10 @@ class BottomSection extends React.Component {
     const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
     return (
       <Container hasGroupedCoreValues={hasGroupedCoreValues}>
-        <FinalCoreValuePanel/>
+        <FinalCoreValuePanel
+          coreValues={this.props.coreValues}
+          topFiveCoreValues={this.props.topFiveCoreValues}
+        />
       </Container>
     );
   }

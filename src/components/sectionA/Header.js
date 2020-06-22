@@ -11,7 +11,7 @@ const Title = styled.h1`
 const Text = styled.div`
   font-size: 14px;
   color: #798da3;
-  padding: 0 100px 0;
+  padding: 0 10px 0;
 `;
 
 class Header extends React.Component {

@@ -8,8 +8,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 95%;
-  padding: 10px;
+  width: 100%;
   display: ${props => (props.hasSelectedCoreValues ? 'flex' : 'none')}; 
 `;
 
@@ -28,6 +27,8 @@ class MiddleSection extends React.Component {
         <GroupingColumnPanel 
           coreValues={this.props.coreValues} 
           columns={this.props.columns}
+          topFiveCoreValues={this.props.topFiveCoreValues}
+          updateTopFiveCoreValues={this.props.updateTopFiveCoreValues}
         />
         <ContinueButton 
           shouldActivate={isContinueButtonEnabled} 

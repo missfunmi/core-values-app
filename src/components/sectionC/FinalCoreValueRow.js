@@ -15,7 +15,7 @@ class FinalCoreValueRow extends React.Component {
   render() {
     return (
       <Container>
-        <FinalCoreValueLabel text={this.props.finalCoreValue}/>
+        <FinalCoreValueLabel text={this.props.text} coreValueId={this.props.coreValueId}/>
         <FinalCoreValueStatement/>
       </Container>
     )

@@ -5,13 +5,12 @@ import CoreValuePanel from './CoreValuePanel';
 import ContinueButton from './ContinueButton';
 
 const Container = styled.div`
-  padding: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 95%;
+  width: 100%;
 `;
 
 class TopSection extends React.Component {

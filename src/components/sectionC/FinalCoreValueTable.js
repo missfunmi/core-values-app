@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import FinalCoreValueRow from './FinalCoreValueRow';
-import selectedValuesData from '../../selected-values-data';
 
 const Container = styled.div`
   margin: 8px;
@@ -9,17 +8,30 @@ const Container = styled.div`
   background-color: white;
   border-radius: 4px;
   width: 400px;
-  display: flex;
+  display: ${props => (props.topFiveCoreValues.length > 0 ? 'flex' : 'none')};
   flex-direction: column;
   padding: 10px 20px;
 `;
 
 class FinalCoreValueTable extends React.Component {
+  coreValueText(coreValueId) {
+    const coreValues = this.props.coreValues;
+    const coreValue = coreValues.find(({ id }) => id === coreValueId);
+    return coreValue?.text || '<not yet selected>';
+  }
+
   render() {
+    const finalFive = this.props.topFiveCoreValues;
+    // const finalFive = selectedValuesData;
     return (
-      <Container>
-        {selectedValuesData.map((finalCoreValue, index) => (
-          <FinalCoreValueRow key={index} finalCoreValue={finalCoreValue}/>
+      <Container topFiveCoreValues={this.props.topFiveCoreValues}>
+        {finalFive.map((coreValueId, index) => (
+          <FinalCoreValueRow
+            key={coreValueId} 
+            index={index} 
+            coreValueId={coreValueId}
+            text={this.coreValueText(coreValueId)}
+          />
         ))}
       </Container>
     );
