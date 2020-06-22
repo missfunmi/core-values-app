@@ -9,7 +9,7 @@ const Column = styled.div`
   border: 2px solid #c9d3dd;
   border-radius: 10px;
   background-color: white;
-  width: 180px;
+  width: 200px;
   min-height: 300px;
   display: flex;
   flex-direction: row;
