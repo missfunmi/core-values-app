@@ -12,6 +12,7 @@
 
 # production
 /build
+/.netlify/state.json
 
 # misc
 .DS_Store

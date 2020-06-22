@@ -12,7 +12,6 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  font-family: 'Optima';
 `;
 
 const CORE_VALUE_PREFIX = 'coreValue-';
@@ -202,7 +201,8 @@ class App extends React.Component {
   }
 
   onDragUpdate = (update) => { 
-    const { destination, source, draggableId } = update;
+    // TBD
+    // const { destination, source, draggableId } = update;
     // console.log(`draggableId is: ${draggableId}\nsource is:\n${JSON.stringify(source, null, 2)},\ndestination is:\n${JSON.stringify(destination, null, 2)}`);
   }
 
