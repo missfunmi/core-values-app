@@ -14,7 +14,6 @@ const CoreValueParent = styled.div`
   border: none;
   background-color: ${props => (props.hasGroupedCoreValues ? '#f9f9f9' : '#ffffff')};
   text-align: center;
-  border-radius: 20px;
   cursor: pointer;
   display: flex;
 `;
@@ -25,12 +24,12 @@ const CoreValueWrapper = styled.div`
 
 const Placeholder = styled.div`
   text-align: center;
-  border-radius: 20px;
   padding: 3px 8px;
   margin: 3px 2px;
   color: #d3d3d3;
   background-color: #f9f9f9;
-  border: 2px dashed #d3d3d3;
+  border-radius: 20px;
+  border: 1px dashed #d3d3d3;
   display: ${props => (props.hasStartedDrag || props.hasCompletedDrag ? 'block' : 'none')};
 `;
 
