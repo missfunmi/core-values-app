@@ -24,6 +24,8 @@ class GroupingColumnPanel extends React.Component {
           coreValues={this.props.coreValues} 
           columnValues={this.props.columns[columnId].coreValues}
           updateTopFiveCoreValues={this.props.updateTopFiveCoreValues}
+          hasGroupedCoreValues={this.props.hasGroupedCoreValues}
+          topFiveCoreValues={this.props.topFiveCoreValues}
         />
       );
     }

@@ -32,6 +32,7 @@ class MiddleSection extends React.Component {
           columns={this.props.columns}
           topFiveCoreValues={this.props.topFiveCoreValues}
           updateTopFiveCoreValues={this.props.updateTopFiveCoreValues}
+          hasGroupedCoreValues={hasGroupedCoreValues}
         />
         <ContinueButton 
           shouldActivate={isContinueButtonEnabled} 

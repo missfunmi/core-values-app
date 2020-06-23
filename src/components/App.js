@@ -260,6 +260,7 @@ class App extends React.Component {
             coreValues={this.state.coreValues}
             selections={this.state.selections}
             hasSelectedCoreValues={this.state.hasSelectedCoreValues}
+            hasGroupedCoreValues={this.state.hasGroupedCoreValues}
             updateSelections={this.updateSelections}
             displayMiddleSection={this.displayMiddleSection}
           />

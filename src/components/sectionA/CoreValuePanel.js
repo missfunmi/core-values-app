@@ -12,7 +12,7 @@ const Container = styled.div`
 
 const CoreValueParent = styled.div`
   border: none;
-  background-color: #ffffff;
+  background-color: ${props => (props.hasGroupedCoreValues ? '#f9f9f9' : '#ffffff')};
   text-align: center;
   border-radius: 20px;
   cursor: pointer;
@@ -45,9 +45,12 @@ class CoreValuePanel extends React.Component {
   render() {
     const isDropDisabled = true;
     const coreValues = this.props.coreValues;
+    const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
 
     return (
-      <Container>
+      <Container
+        hasGroupedCoreValues={hasGroupedCoreValues}
+      >
         {coreValues.map((coreValue, index) => (
           <Droppable
             droppableId={`${CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
@@ -75,7 +78,7 @@ class CoreValuePanel extends React.Component {
                     index={index}
                     coreValueId={coreValue.id}
                     text={coreValue.text}
-                    // selected={this.isSelected(coreValue.text)}
+                    hasGroupedCoreValues={hasGroupedCoreValues}
                     selected={this.isSelected(coreValue.id)}
                     updateSelections={this.props.updateSelections}
                   />

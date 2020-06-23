@@ -47,7 +47,7 @@ class GroupingColumn extends React.Component {
     if (this.props.updateTopFiveCoreValues) {
       this.props.updateTopFiveCoreValues(coreValueId);
     }
-    // TODO: Also - change text to red 'x', change background color of CoreValue to pink
+    // TODO: Also - change text to red 'x', change background color of CoreValue to orange
   }
 
   render() {
@@ -72,7 +72,9 @@ class GroupingColumn extends React.Component {
                     coreValueId={columnValue}
                     text={this.coreValueText(columnValue)}
                     selected={isSelected}
+                    topFiveCoreValues={this.props.topFiveCoreValues}
                     updateTopFiveCoreValues={this.props.updateTopFiveCoreValues}
+                    hasGroupedCoreValues={this.props.hasGroupedCoreValues}
                   />
                   <Selecter
                     onClick={() => this.handleClick(columnValue)}

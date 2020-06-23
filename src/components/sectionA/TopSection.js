@@ -11,21 +11,26 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  pointer-events: ${props => (props.hasGroupedCoreValues ? 'none' : 'auto')};
 `;
 
 class TopSection extends React.Component {
   render() {
     const hasSelectedCoreValues = this.props.hasSelectedCoreValues;
+    const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
     const selections = this.props.selections;
     const isContinueButtonEnabled = (selections.length && !hasSelectedCoreValues) ? true : false;
 
     return (
-      <Container>
+      <Container
+        hasGroupedCoreValues = {hasGroupedCoreValues}
+      >
         <Header/>
         <CoreValuePanel 
           coreValues={this.props.coreValues}
           selections={selections}
           updateSelections={this.props.updateSelections}
+          hasGroupedCoreValues={hasGroupedCoreValues}
         />
         <ContinueButton 
           selections={selections} 

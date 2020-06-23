@@ -7,11 +7,14 @@ const Bubble = styled.div`
   border-radius: 20px;
   padding: 3px 8px;
   margin: 3px 2px;
-  cursor: pointer;
+  cursor: ${props => (props.hasGroupedCoreValues ? 'default' : 'pointer')};
   display: block;
-  color: ${props => (props.selected ? '#ffffff' : '#798da3')};
-  background-color: ${props => (props.selected ? '#3d8af7' : '#ffffff')};
-  border: ${props => (props.selected ? '2px solid #3d8af7' : '2px solid #c9d3dd')};
+  color: 
+    ${props => (props.selected ? '#ffffff' : props.hasGroupedCoreValues ? '#d3d3d3' : '#798da3')};
+  background-color: 
+    ${props => (props.isTopFive ? '#e04b11' : props.selected ? '#3d8af7' : props.hasGroupedCoreValues ? '#f9f9f9' : '#ffffff')};
+  border: 
+    ${props => (props.isTopFive ? '2px solid #e04b11' : props.selected ? '2px solid #3d8af7' : props.hasGroupedCoreValues ? '2px solid #d3d3d3' : '2px solid #c9d3dd')};
 `;
 
 class CoreValue extends React.Component {
@@ -22,20 +25,27 @@ class CoreValue extends React.Component {
   }
 
   render() {
+    const coreValueId = this.props.coreValueId;
     const currentlySelected = this.props.selected;
-    const isDragDisabled = !currentlySelected;
+    const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
+    const isDragDisabled = hasGroupedCoreValues || !currentlySelected;
+    const topFiveCoreValues = this.props.topFiveCoreValues;
+    const isTopFive = topFiveCoreValues && topFiveCoreValues.includes(coreValueId);
 
     return (
         <Draggable
-          draggableId={this.props.coreValueId}
-          key={this.props.coreValueId}
+          draggableId={coreValueId}
+          key={coreValueId}
           index={this.props.index}
           isDragDisabled={isDragDisabled}
+          hasGroupedCoreValues={hasGroupedCoreValues}
         >
           {(provided, snapshot) => (
             <Bubble
-              onClick={() => this.handleClick(this.props.coreValueId)}
+              onClick={() => this.handleClick(coreValueId)}
               selected={currentlySelected}
+              hasGroupedCoreValues={hasGroupedCoreValues}
+              isTopFive={isTopFive}
               ref={provided.innerRef}
               {...provided.draggableProps}
               {...provided.dragHandleProps}

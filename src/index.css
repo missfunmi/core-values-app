@@ -35,6 +35,11 @@ h1 {
   font-size: 75px;
 }
 
+h3 {
+  font-family: 'playfair_displaybold', serif;
+  font-size: 32px;
+}
+
 body {
   font-family: 'open_sanslight', sans-serif;
 }

@@ -5,9 +5,9 @@
 - [x] Allow core values to be removed from grouping columns
 - [x] Button to select main value
 - [x] Google font
-- [ ] Logo
+- [x] Logo
 - [ ] Landing page
-- [ ] Navigation bar
+- [ ] Navigation bar, see [example](https://github.com/M0nica/ambition-fund-website/blob/master/src/components/common/navigation/navigation.jsx)
 - [ ] Add routes
 - [ ] Content
 - [x] Display sections on button click
@@ -15,12 +15,13 @@
 - [ ] License
 - [x] Deploy (Netlify)
 - [x] Permanently disable continue buttons after clicking
-- [ ] On clicking second continue button:
-  - [ ] Freeze corevalue main panel - no more select/un-select
-  - [ ] Disable dragging in columns - no more dragging
+- [x] On clicking second continue button:
+  - [x] Freeze corevalue main panel - no more select/un-select
+  - [x] Disable dragging in columns - no more dragging
 - [ ] Primary core value selection fixes: 
   - [ ] onBeforeDragStart or onDragStart, hide plus button
-  - [ ] When plus button is clicked, change icon to red x (animate), change style of selected core value to pink? red?
+  - [ ] When plus button is clicked, change icon to red x (animate), 
+  - [x] When plus button is clicked, change style of selected core value to orange?
   - [ ] Only allow one primary core value selection per column, reset styles when new one is selected
   - [ ] Require primary core value in each column to be picked before enabling continue button
   - [x] Once bottom panel appears on page, never re-hide it
@@ -65,3 +66,6 @@
 
 ## Funsies
 - [ ] Add animation on selecting in top panel
+
+## Color scheme
+- #e04b11 orange

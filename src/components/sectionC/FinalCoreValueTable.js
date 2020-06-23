@@ -9,22 +9,28 @@ const Container = styled.div`
   border-radius: 4px;
   width: 400px;
   min-height: 300px;
-  display: ${props => (props.topFiveCoreValues.length > 0 ? 'flex' : 'none')};
+  display: 'flex';
   flex-direction: column;
   padding: 10px 20px;
+`;
+
+const Title = styled.h3`
+  text-align: left;
+  padding-left: 8px;
 `;
 
 class FinalCoreValueTable extends React.Component {
   coreValueText(coreValueId) {
     const coreValues = this.props.coreValues;
     const coreValue = coreValues.find(({ id }) => id === coreValueId);
-    return coreValue?.text || '<not yet selected>';
+    return coreValue?.text || '<re-select>';
   }
 
   render() {
     const finalFive = this.props.topFiveCoreValues;
     return (
       <Container topFiveCoreValues={this.props.topFiveCoreValues}>
+        <Title>Your core values are...</Title>
         {finalFive.map((coreValueId, index) => (
           <FinalCoreValueRow
             key={coreValueId} 

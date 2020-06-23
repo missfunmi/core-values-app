@@ -3,10 +3,9 @@ import styled from 'styled-components';
 
 const Label = styled.div`
   color: #c9d3dd;
-  padding: 15px 18px 10px;
+  padding: 11px 12px 10px 1px;
   font-size: 14px;
   text-align: left;
-  width: 70%;
   text-decoration: underline;
 `;
 

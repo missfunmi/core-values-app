@@ -22,7 +22,6 @@ class ContinueButton extends React.Component {
   }
 
   render() {
-
     return (
       <Button 
         enabled={this.props.shouldActivate}

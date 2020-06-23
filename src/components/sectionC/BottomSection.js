@@ -19,6 +19,7 @@ class BottomSection extends React.Component {
         <FinalCoreValuePanel
           coreValues={this.props.coreValues}
           topFiveCoreValues={this.props.topFiveCoreValues}
+          hasGroupedCoreValues={hasGroupedCoreValues}
         />
       </Container>
     );

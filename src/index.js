@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
 import '@atlaskit/css-reset';
 import './index.css';
 import App from './components/App';
-import { HashRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <HashRouter>
