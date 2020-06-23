@@ -4,17 +4,18 @@
 - [x] Allow items to be dropped between other items
 - [x] Allow core values to be removed from grouping columns
 - [x] Button to select main value
-- [ ] Google font
+- [x] Google font
 - [ ] Logo
 - [ ] Landing page
+- [ ] Navigation bar
 - [ ] Add routes
-- [ ] Copy
+- [ ] Content
 - [x] Display sections on button click
 - [x] Set core values back to unselected in grouping column but still allow dragging?
 - [ ] License
 - [x] Deploy (Netlify)
 - [x] Permanently disable continue buttons after clicking
-- [ ] On click second continue button:
+- [ ] On clicking second continue button:
   - [ ] Freeze corevalue main panel - no more select/un-select
   - [ ] Disable dragging in columns - no more dragging
 - [ ] Primary core value selection fixes: 
@@ -29,10 +30,11 @@
 - [ ] Scroll to sections on button click
 - [ ] Add a reset button to clear all grouped items back to the main panel
 - [ ] Tests: [testing-library](https://github.com/testing-library/react-testing-library)
-- [ ] Logging library
+- [ ] Logging
+- [ ] Email to yourself or screenshot for social media posting
 
 ## Future
-- Can grouping column contents be centered? May require more complex CSS or animation finagling. [See here](https://github.com/atlassian/react-beautiful-dnd/issues/1851)
+- [ ] Can grouping column contents be centered? May require more complex CSS or animation finagling. [See here](https://github.com/atlassian/react-beautiful-dnd/issues/1851)
 - [ ] Dragging outside of the column snaps back to column first before appearing in core values panel - FIX THIS
 - [ ] Add ability to add new columns?
 - [ ] Use onDragStart to toggle isDropDisabled on the main panel? [See here](https://react-beautiful-dnd.netlify.app/?path=/story/ondragstart--toggle-isdropdisabled-ondragstart)
