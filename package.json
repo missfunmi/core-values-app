@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@atlaskit/css-reset": "^5.0.12",
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.3.0",
     "@testing-library/user-event": "^12.0.7",

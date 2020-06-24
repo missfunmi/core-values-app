@@ -22,6 +22,7 @@ const Bubble = styled.div`
   border-radius: 20px;
   border-width: 1px;
   border-style: solid;
+  transition: all 0.3s linear;
 `;
 
 class CoreValue extends React.Component {
