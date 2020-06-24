@@ -8,7 +8,8 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  display: ${props => (props.hasGroupedCoreValues ? 'flex' : 'none')}; 
+  display: 'flex'; 
+  visibility: ${props => (props.hasGroupedCoreValues ? 'visible' : 'hidden')}; 
 `;
 
 class BottomSection extends React.Component {

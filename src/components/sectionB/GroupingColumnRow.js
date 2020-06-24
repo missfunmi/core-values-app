@@ -19,27 +19,25 @@ const Selecter = styled.div`
 `
 
 class GroupingColumnRow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { isTopFive: false };
-  }
-
   coreValueText(coreValueId) {
     const coreValues = this.props.coreValues;
     const coreValue = coreValues.find(({ id }) => id === coreValueId);
     return coreValue.text;
   }
 
-  handleClick(coreValueId) {
+  handleClick(columnId, coreValueId) {
     if (this.props.updateTopFiveCoreValues) {
-      this.props.updateTopFiveCoreValues(coreValueId);
+      this.props.updateTopFiveCoreValues(columnId, coreValueId);
     }
-    this.setState({ isTopFive: !this.state.isTopFive });
   }
 
   render() {
     const isSelected = true;
     const coreValueId = this.props.coreValueId;
+    const columnId = this.props.columnId;
+    const topFiveCoreValues = this.props.topFiveCoreValues;
+    const isTopFive = topFiveCoreValues && Object.values(topFiveCoreValues).includes(coreValueId);
+
     return (
       <ColumnRow>
         <CoreValue
@@ -47,14 +45,13 @@ class GroupingColumnRow extends React.Component {
           index={this.props.index}
           coreValueId={coreValueId}
           selected={isSelected}
+          isTopFive={isTopFive}
           text={this.coreValueText(coreValueId)}
-          topFiveCoreValues={this.props.topFiveCoreValues}
-          updateTopFiveCoreValues={this.props.updateTopFiveCoreValues}
           hasGroupedCoreValues={this.props.hasGroupedCoreValues}
         />
         <Selecter
-          isTopFive={this.state.isTopFive} 
-          onClick={() => this.handleClick(coreValueId)}
+          isTopFive={isTopFive} 
+          onClick={() => this.handleClick(columnId, coreValueId)}
         >
           <FontAwesomeIcon icon={faPlus} />
         </Selecter>

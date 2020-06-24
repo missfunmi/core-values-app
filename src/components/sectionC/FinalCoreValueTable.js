@@ -28,15 +28,16 @@ class FinalCoreValueTable extends React.Component {
 
   render() {
     const finalFive = this.props.topFiveCoreValues;
+    const columns = Object.keys(finalFive);
     return (
-      <Container topFiveCoreValues={this.props.topFiveCoreValues}>
+      <Container>
         <Title>Your core values are...</Title>
-        {finalFive.map((coreValueId, index) => (
+        {columns.map((column, index) => (
           <FinalCoreValueRow
-            key={coreValueId} 
+            key={finalFive[column]} 
             index={index} 
-            coreValueId={coreValueId}
-            text={this.coreValueText(coreValueId)}
+            coreValueId={finalFive[column]}
+            text={this.coreValueText(finalFive[column])}
           />
         ))}
       </Container>

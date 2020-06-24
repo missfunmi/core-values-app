@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import GroupingColumnPanel from './GroupingColumnPanel';
 import ContinueButton from './ContinueButton';
 
+const DEFAULT_NUMBER_COLUMNS = 5;
+
 const Container = styled.div`
   text-align: center;
   flex-direction: column;
@@ -16,14 +18,18 @@ class MiddleSection extends React.Component {
   render() {
     const hasSelectedCoreValues = this.props.hasSelectedCoreValues;
     const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
+    const topFiveCoreValues = this.props.topFiveCoreValues;
     const selections = this.props.selections;
     const allColumnValues = 
       Object.values(this.props.columns)
             .reduce((accumulator, column) => accumulator.concat(column.coreValues),[]);
     const areAllSelectionsGrouped = selections.length > 0 
-                                      && selections.length === allColumnValues.length 
-                                      && selections.every(selection => allColumnValues.includes(selection));
-    const isContinueButtonEnabled = (areAllSelectionsGrouped && !hasGroupedCoreValues) ? true : false;
+                                    && selections.length === allColumnValues.length 
+                                    && selections.every(selection => allColumnValues.includes(selection));
+    const isContinueButtonEnabled = areAllSelectionsGrouped 
+                                    && Object.keys(topFiveCoreValues).length === DEFAULT_NUMBER_COLUMNS
+                                    && !hasGroupedCoreValues
+                                    ? true : false;
 
     return (
       <Container hasSelectedCoreValues={hasSelectedCoreValues}>

@@ -26,7 +26,7 @@ const InnerColumn = styled.div`
 class GroupingColumn extends React.Component {
   render() {
     const columnId = this.props.columnId;
-    const columnValues = this.props.columnValues ? this.props.columnValues : [];
+    const columnCoreValues = this.props.columnValues ? this.props.columnValues : [];
 
     return (
       <Droppable droppableId={columnId} key={columnId}>
@@ -37,11 +37,12 @@ class GroupingColumn extends React.Component {
             {...provided.droppableProps}
           >
             <InnerColumn>
-              {columnValues.map((columnValue, index) => (
+              {columnCoreValues.map((coreValueId, index) => (
                 <GroupingColumnRow
-                  key={columnValue}
+                  key={coreValueId}
                   index={index}
-                  coreValueId={columnValue}
+                  columnId={columnId}
+                  coreValueId={coreValueId}
                   coreValues={this.props.coreValues}
                   topFiveCoreValues={this.props.topFiveCoreValues}
                   updateTopFiveCoreValues={this.props.updateTopFiveCoreValues}

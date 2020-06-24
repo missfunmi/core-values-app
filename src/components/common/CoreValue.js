@@ -22,7 +22,6 @@ const Bubble = styled.div`
   border-radius: 20px;
   border-width: 1px;
   border-style: solid;
-  transition: all 0.3s linear;
 `;
 
 class CoreValue extends React.Component {
@@ -37,8 +36,6 @@ class CoreValue extends React.Component {
     const currentlySelected = this.props.selected;
     const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
     const isDragDisabled = hasGroupedCoreValues || !currentlySelected;
-    const topFiveCoreValues = this.props.topFiveCoreValues;
-    const isTopFive = topFiveCoreValues && topFiveCoreValues.includes(coreValueId);
 
     return (
         <Draggable
@@ -53,7 +50,7 @@ class CoreValue extends React.Component {
               onClick={() => this.handleClick(coreValueId)}
               selected={currentlySelected}
               hasGroupedCoreValues={hasGroupedCoreValues}
-              isTopFive={isTopFive}
+              isTopFive={this.props.isTopFive}
               ref={provided.innerRef}
               {...provided.draggableProps}
               {...provided.dragHandleProps}

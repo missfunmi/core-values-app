@@ -32,7 +32,7 @@ class App extends React.Component {
       hasSelectedCoreValues: false,
       hasGroupedCoreValues: false,
       selections: [],
-      topFiveCoreValues: [],
+      topFiveCoreValues: {},
       coreValues: this.initializeCoreValuesState(),
       groupingColumns: this.initializeGroupingColumnsState()
     }
@@ -66,35 +66,26 @@ class App extends React.Component {
     return groupingColumns;
   }
 
-  updateTopFiveCoreValues(coreValueId) {
-    let topFiveCoreValues = Array.from(this.state.topFiveCoreValues);
-    if (topFiveCoreValues.includes(coreValueId)) {
-      const indexToRemove = topFiveCoreValues.indexOf(coreValueId);
-      topFiveCoreValues.splice(indexToRemove, 1);
+  updateTopFiveCoreValues(columnId, coreValueId) {
+    let topFiveCoreValues = this.state.topFiveCoreValues;
+    if (topFiveCoreValues[columnId] === coreValueId) {
+      delete topFiveCoreValues[columnId];
     } else {
-      topFiveCoreValues.push(coreValueId);
+      topFiveCoreValues[columnId] = coreValueId;
     }
-    const newState = {
-      ...this.state,
-      topFiveCoreValues: topFiveCoreValues
-    }
-    this.setState(newState);
+    this.setState({ ...this.state, topFiveCoreValues });
   }
 
   updateSelections(selection) {
-    const updatedSelections = Array.from(this.state.selections);
-    if (updatedSelections.includes(selection)) {
-      const indexToRemove = updatedSelections.indexOf(selection);
-      updatedSelections.splice(indexToRemove, 1);
+    const selections = Array.from(this.state.selections);
+    if (selections.includes(selection)) {
+      const indexToRemove = selections.indexOf(selection);
+      selections.splice(indexToRemove, 1);
     } else {
-      updatedSelections.push(selection);
-      updatedSelections.sort();
+      selections.push(selection);
+      selections.sort();
     }
-    const newState = {
-      ...this.state,
-      selections: updatedSelections
-    }
-    this.setState(newState);
+    this.setState({ ...this.state, selections });
   }
 
   displayMiddleSection() {
@@ -200,12 +191,6 @@ class App extends React.Component {
     this.setState(newState);
   }
 
-  onDragUpdate = (update) => { 
-    // TBD
-    // const { destination, source, draggableId } = update;
-    // console.log(`draggableId is: ${draggableId}\nsource is:\n${JSON.stringify(source, null, 2)},\ndestination is:\n${JSON.stringify(destination, null, 2)}`);
-  }
-
   onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
     if (!destination) {
@@ -252,7 +237,6 @@ class App extends React.Component {
     return (
       <DragDropContext
         onBeforeDragStart={this.onBeforeDragStart}
-        onDragUpdate={this.onDragUpdate}
         onDragEnd={this.onDragEnd}
       >
         <Container>
