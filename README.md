@@ -31,7 +31,7 @@
 - [ ] Update content
 - [ ] Email or tweet your core values
 - [ ] Add illustrations
-- [ ] Analytics? [goatcounter](https://www.goatcounter.com/), [matomo](https://news.ycombinator.com/item?id=23560823), 9goaccess](https://goaccess.io/), [nytimes](https://github.com/NYTimes/react-tracking), [larger round-up](https://lwn.net/SubscriberLink/822568/61d29096a4012e06/)
+- [ ] Analytics? [goatcounter](https://www.goatcounter.com/), [matomo](https://news.ycombinator.com/item?id=23560823), [goaccess](https://goaccess.io/), [nytimes](https://github.com/NYTimes/react-tracking), [larger round-up](https://lwn.net/SubscriberLink/822568/61d29096a4012e06/)
 
 ## v2
 - [ ] Tests: [testing-library](https://github.com/testing-library/react-testing-library)
