@@ -44,28 +44,49 @@ body {
   font-family: 'open_sanslight', sans-serif;
 }
 
-.introjs-tooltip {
+/* Onboarding Hints */
+.corevalues-hints {
   background-color: #3d8af7;
   color: white;
   font-size: 13px;
 }
 
-.introjs-arrow.top {
+.corevalues-hints .introjs-arrow.top,
+.corevalues-hints .introjs-arrow.top-left,
+.corevalues-hints .introjs-arrow.top-right {
   border-bottom-color: #3d8af7;
 }
 
-a.introjs-button {
-  background-color: #3b4754 !important;
-  color: white !important;
-  text-shadow: none !important;
-  border: none !important;
-  background-image: none !important;
-  font: 12px 'open_sanslight', sans-serif !important;
-  float: right !important;
-  margin-right: 6px !important;
+.corevalues-hints .introjs-arrow.left,
+.corevalues-hints .introjs-arrow.left-bottom,
+.corevalues-hints .introjs-arrow.left-top {
+  border-right-color: #3d8af7;
 }
 
-a.introjs-button:hover {
+.corevalues-hints .introjs-arrow.right,
+.corevalues-hints .introjs-arrow.right-bottom,
+.corevalues-hints .introjs-arrow.right-top {
+  border-left-color: #3d8af7;
+}
+
+.corevalues-hints .introjs-arrow.bottom,
+.corevalues-hints .introjs-arrow.bottom-left,
+.corevalues-hints .introjs-arrow.bottom-right {
+  border-top-color: #3d8af7;
+}
+
+.corevalues-hints a.introjs-button {
+  background-color: #3b4754;
+  color: white;
+  text-shadow: none;
+  border: none;
+  background-image: none;
+  font: 12px 'open_sanslight', sans-serif;
+  float: right;
+  margin-right: 6px;
+}
+
+.corevalues-hints a.introjs-button:hover {
   color: white;
   border-color: #3b4754;
   background-color: #3b4754;

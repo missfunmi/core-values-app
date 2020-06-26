@@ -26,11 +26,13 @@
 - [ ] Add landing page (and [route](https://reacttraining.com/react-router/web/api/Link/to-object))
 - [x] Add tooltips
   - [x] Use state to keep track of if hint has been shown & hidden
+  - [x] Use custom css instead of force-overriding the library css: [here](https://github.com/usablica/intro.js/blob/master/example/custom-class/index.html)
 - [ ] Logo - Update to say "My Core Values"
 - [ ] Add Navigation bar, see [example](https://github.com/M0nica/ambition-fund-website/blob/master/src/components/common/navigation/navigation.jsx)
 - [ ] Add footer
 - [ ] Update content
 - [ ] Email or tweet your core values
+- [ ] Minor spacing & responsive UI fixes
 - [ ] Add illustrations
 - [ ] Analytics? [goatcounter](https://www.goatcounter.com/), [matomo](https://news.ycombinator.com/item?id=23560823), [goaccess](https://goaccess.io/), [nytimes](https://github.com/NYTimes/react-tracking), [larger round-up](https://lwn.net/SubscriberLink/822568/61d29096a4012e06/)
 
@@ -41,11 +43,16 @@
   - [ ] Use classes & reusable components
   - [ ] Use events
   - [x] Centralized constants and utils
+- [ ] Add a reset button to clear all grouped items back to the main panel
+- [ ] Hints update:
+  - [ ] Add button to permanently hide hints
+  - [ ] Use localStorage? Cookies?
+  - [ ] Fix spacing of hints
+  - [ ] Fix positioning of hint arrows
 - [ ] Draggable interactions:
   - [ ] onBeforeDragStart or onDragStart while in column, hide plus button?
   - [ ] How to prevent draggable from snapping back into column on a false drop?
 - [ ] Local persistence?
-- [ ] Add a reset button to clear all grouped items back to the main panel
 - [ ] License
 - [ ] CI/CD
 - [ ] Logging library [logrocket](https://logrocket.com/)

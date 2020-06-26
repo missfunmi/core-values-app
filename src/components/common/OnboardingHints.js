@@ -18,22 +18,26 @@ export const OnboardingHints = ({
         onClose={suppressHints}
         options={{
           hintButtonLabel: Constants.DEFAULT_HINTS_BUTTON_LABEL,
-          tooltipPosition: "left"
+          tooltipClass: Constants.CUSTOM_HINTS_CLASS,
+          tooltipPosition: 'auto',
+          positionPrecedence: ['top', 'left', 'right', 'bottom']
         }}
       />
     </div>
   );
 }
 
-export const HintOne = styled.div.attrs(props => ({ className: Constants.HINT_ONE }))`
-`;
+export const HintOne = styled.div.attrs({ 
+  className: Constants.HINT_ONE,
+  "data-position": "top"
+})``;
 
-export const HintTwo = styled.div.attrs(props => ({ className: Constants.HINT_TWO }))`
-  margin-left: 20px;
-  margin-right: 5px;
-`;
+export const HintTwo = styled.div.attrs({ 
+  className: Constants.HINT_TWO,
+  "data-position": "left"
+})``;
 
-export const HintThree = styled.div.attrs(props => ({ className: Constants.HINT_THREE }))`
-  margin-left: 20px;
-  margin-right: 5px;
-`;
+export const HintThree = styled.div.attrs(props => ({ 
+  className: Constants.HINT_THREE,
+  "data-position": "right"
+}))``;

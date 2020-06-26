@@ -2,7 +2,7 @@ export const hintsData = {
   hintOne: {
     element: ".hintOne",
     hint: "<strong>Start by selecting every word</strong> that resonates strongly as a core value. Don't overthink it. Give yourself no more than 5 minutes.",
-    hintPosition: "middle-right",
+    hintPosition: "top-middle",
   },
   hintTwo: {
     element: ".hintTwo",
@@ -12,7 +12,7 @@ export const hintsData = {
   hintThree: {
     element: ".hintThree",
     hint: "<strong>Choose one value in each group</strong> that captures the essence of that group. Again, this is entirely personal - no need to overthink it.",
-    hintPosition: "bottom-right"
+    hintPosition: "middle-right"
   },
   hintFour: {
     element: ".hintFour",
