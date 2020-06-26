@@ -23,39 +23,44 @@ const InnerColumn = styled.div`
   flex-direction: column;
 `;
 
-class GroupingColumn extends React.Component {
-  render() {
-    const columnId = this.props.columnId;
-    const columnCoreValues = this.props.columnValues ? this.props.columnValues : [];
-
-    return (
-      <Droppable droppableId={columnId} key={columnId}>
-        {(provided, snapshot) => (
-          <Column
-            ref={provided.innerRef}
-            isDraggingOver={snapshot.isDraggingOver}
-            {...provided.droppableProps}
-          >
-            <InnerColumn>
-              {columnCoreValues.map((coreValueId, index) => (
-                <GroupingColumnRow
-                  key={coreValueId}
-                  index={index}
-                  columnId={columnId}
-                  coreValueId={coreValueId}
-                  coreValues={this.props.coreValues}
-                  topFiveCoreValues={this.props.topFiveCoreValues}
-                  updateTopFiveCoreValues={this.props.updateTopFiveCoreValues}
-                  hasGroupedCoreValues={this.props.hasGroupedCoreValues}
-                />
-              ))}
-              {provided.placeholder}
-            </InnerColumn>
-          </Column>
-        )}
-      </Droppable>
-    );
-  }
-}
+const GroupingColumn = ({
+  columnId,
+  columnValues,
+  coreValues,
+  topFiveCoreValues,
+  updateTopFiveCoreValues,
+  hasGroupedCoreValues,
+  ...props
+}) => {
+  const columnCoreValues = columnValues ? columnValues : [];
+  
+  return (
+    <Droppable droppableId={columnId} key={columnId}>
+      {(provided, snapshot) => (
+        <Column
+          ref={provided.innerRef}
+          isDraggingOver={snapshot.isDraggingOver}
+          {...provided.droppableProps}
+        >
+          <InnerColumn>
+            {columnCoreValues.map((coreValueId, index) => (
+              <GroupingColumnRow
+                key={coreValueId}
+                index={index}
+                columnId={columnId}
+                coreValueId={coreValueId}
+                coreValues={coreValues}
+                topFiveCoreValues={topFiveCoreValues}
+                updateTopFiveCoreValues={updateTopFiveCoreValues}
+                hasGroupedCoreValues={hasGroupedCoreValues}
+              />
+            ))}
+            {provided.placeholder}
+          </InnerColumn>
+        </Column>
+      )}
+    </Droppable>
+  );
+};
 
 export default GroupingColumn;

@@ -41,7 +41,6 @@ class GroupingColumnRow extends React.Component {
     return (
       <ColumnRow>
         <CoreValue
-          key={this.props.key}
           index={this.props.index}
           coreValueId={coreValueId}
           selected={isSelected}

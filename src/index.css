@@ -55,14 +55,14 @@ body {
 }
 
 a.introjs-button {
-  background-color: #3b4754;
-  color: white;
-  text-shadow: none;
-  border: none;
-  background-image: none;
-  font: 12px 'open_sanslight', sans-serif;
-  float: right;
-  margin-right: 6px;
+  background-color: #3b4754 !important;
+  color: white !important;
+  text-shadow: none !important;
+  border: none !important;
+  background-image: none !important;
+  font: 12px 'open_sanslight', sans-serif !important;
+  float: right !important;
+  margin-right: 6px !important;
 }
 
 a.introjs-button:hover {

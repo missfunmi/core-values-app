@@ -4,7 +4,9 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import TopSection from './sectionA/TopSection';
 import MiddleSection from './sectionB/MiddleSection';
 import BottomSection from './sectionC/BottomSection';
+import { OnboardingHints } from './common/OnboardingHints';
 import { valuesData } from '../values-data';
+import { hintsData } from '../hints';
 import * as Constants from '../constants';
 
 const Container = styled.div`
@@ -19,6 +21,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.suppressHints = this.suppressHints.bind(this);
     this.updateSelections = this.updateSelections.bind(this);
     this.displayMiddleSection = this.displayMiddleSection.bind(this);
     this.displayBottomSection = this.displayBottomSection.bind(this);
@@ -30,7 +33,8 @@ class App extends React.Component {
       selections: [],
       topFiveCoreValues: {},
       coreValues: this.initializeCoreValuesState(),
-      groupingColumns: this.initializeGroupingColumnsState()
+      groupingColumns: this.initializeGroupingColumnsState(),
+      activeHints: [hintsData[Constants.HINT_ONE]]
     }
   }
 
@@ -62,6 +66,13 @@ class App extends React.Component {
     return groupingColumns;
   }
 
+  suppressHints() {
+    this.setState({
+      ...this.state,
+      activeHints: []
+    });
+  }
+
   updateTopFiveCoreValues(columnId, coreValueId) {
     let topFiveCoreValues = this.state.topFiveCoreValues;
     if (topFiveCoreValues[columnId] === coreValueId) {
@@ -90,7 +101,8 @@ class App extends React.Component {
     }
     this.setState({
       ...this.state,
-      hasSelectedCoreValues: true
+      hasSelectedCoreValues: true,
+      activeHints: [hintsData[Constants.HINT_TWO]]
     });
   }
 
@@ -100,7 +112,8 @@ class App extends React.Component {
     }
     this.setState({
       ...this.state,
-      hasGroupedCoreValues: true
+      hasGroupedCoreValues: true,
+      activeHints: [hintsData[Constants.HINT_THREE]]
     });
   }
 
@@ -236,6 +249,10 @@ class App extends React.Component {
         onDragEnd={this.onDragEnd}
       >
         <Container>
+          <OnboardingHints
+            hints={this.state.activeHints}
+            suppressHints={this.suppressHints}
+          />
           <TopSection
             coreValues={this.state.coreValues}
             selections={this.state.selections}

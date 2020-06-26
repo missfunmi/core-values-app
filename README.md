@@ -24,7 +24,7 @@
   - [x] Once bottom panel appears on page, never re-hide it
 - [x] Add textbox for actionable core value statement
 - [ ] Add landing page (and [route](https://reacttraining.com/react-router/web/api/Link/to-object))
-- [ ] Add tooltips
+- [x] Add tooltips
   - [x] Use state to keep track of if hint has been shown & hidden
 - [ ] Logo - Update to say "My Core Values"
 - [ ] Add Navigation bar, see [example](https://github.com/M0nica/ambition-fund-website/blob/master/src/components/common/navigation/navigation.jsx)

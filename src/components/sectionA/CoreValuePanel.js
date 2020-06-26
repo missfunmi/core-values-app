@@ -1,21 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
 import CoreValue from '../common/CoreValue';
 import * as Constants from '../../constants';
-import { Hints } from 'intro.js-react';
-import { hintsData } from '../../hints';
+import { HintOne } from '../common/OnboardingHints';
 
 const Container = styled.div`
   border: none;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-`;
-
-const HintOne = styled.div.attrs(props => ({ className: 'hint-one' }))`
-  margin-left: 10px;
-  margin-right: 10px;
 `;
 
 const CoreValueParent = styled.div`
@@ -49,26 +43,12 @@ const CoreValuePanel = ({
   ...props
 }) => {
   const IS_DROP_ENABLED = false;
-  const [hintsEnabled, setHintsEnabled] = useState(true);
-
   const isSelected = (coreValueId) => {
     return selections.includes(coreValueId);
   }
 
-  const suppressHint = () => {
-    setHintsEnabled(false);
-  };
-
   return (
     <Container hasGroupedCoreValues={hasGroupedCoreValues}>
-      <Hints
-        enabled={hintsEnabled}
-        hints={hintsData}
-        onClose={suppressHint}
-        options={{
-          hintButtonLabel: Constants.DEFAULT_HINTS_BUTTON_LABEL
-        }}
-      />
       <HintOne />
       {coreValues.map((coreValue, index) => (
         <Droppable

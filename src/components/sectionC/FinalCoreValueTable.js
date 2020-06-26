@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FinalCoreValueRow from './FinalCoreValueRow';
+import { HintThree } from '../common/OnboardingHints';
 
 const Container = styled.div`
   margin: 8px;
@@ -35,6 +36,7 @@ class FinalCoreValueTable extends React.Component {
     const columns = Object.keys(finalFive);
     return (
       <Container>
+        <HintThree/>
         <Title>
           Your <Highlight>core</Highlight> values are...
         </Title>
