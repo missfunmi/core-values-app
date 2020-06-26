@@ -5,6 +5,7 @@ import TopSection from './sectionA/TopSection';
 import MiddleSection from './sectionB/MiddleSection';
 import BottomSection from './sectionC/BottomSection';
 import valuesData from '../values-data';
+import * as Constants from '../constants';
 
 const Container = styled.div`
   display: flex;
@@ -13,11 +14,6 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
 `;
-
-const CORE_VALUE_PREFIX = 'coreValue-';
-const CORE_VALUE_SWAPPED_PREFIX = 'swapped-coreValue-';
-const GROUPING_COLUMN_DROPPABLE_PREFIX = 'grouping-column-';
-const DEFAULT_NUMBER_COLUMNS = 5;
 
 class App extends React.Component {
   constructor(props) {
@@ -40,7 +36,7 @@ class App extends React.Component {
 
   initializeCoreValuesState() {
     return valuesData.map((coreValue, index) => {
-      const coreValueId = CORE_VALUE_PREFIX.concat(index);
+      const coreValueId = Constants.CORE_VALUE_PREFIX.concat(index);
       return {
         id: coreValueId,
         positionInList: index,
@@ -54,8 +50,8 @@ class App extends React.Component {
 
   initializeGroupingColumnsState() {
     let groupingColumns = {};
-    for (let i = 1; i <= DEFAULT_NUMBER_COLUMNS; i++) {
-      const columnId = `${GROUPING_COLUMN_DROPPABLE_PREFIX}${i}`;
+    for (let i = 1; i <= Constants.DEFAULT_NUMBER_COLUMNS; i++) {
+      const columnId = `${Constants.GROUPING_COLUMN_PREFIX}${i}`;
       groupingColumns = {
         ...groupingColumns,
         [columnId]: {
@@ -124,9 +120,9 @@ class App extends React.Component {
       return (coreValue.id === coreValueId)
         ? {
           ...coreValue,
-          id: (coreValue.id.startsWith(CORE_VALUE_PREFIX)
-            ? CORE_VALUE_SWAPPED_PREFIX.concat(coreValue.positionInList)
-            : CORE_VALUE_PREFIX.concat(coreValue.positionInList)),
+          id: (coreValue.id.startsWith(Constants.CORE_VALUE_PREFIX)
+            ? Constants.CORE_VALUE_SWAPPED_PREFIX.concat(coreValue.positionInList)
+            : Constants.CORE_VALUE_PREFIX.concat(coreValue.positionInList)),
           hasStartedDrag: false,
           hasCompletedDrag: false,
           hasCanceledDrag: false
@@ -142,7 +138,7 @@ class App extends React.Component {
   }
 
   isGroupingColumn(droppableId) {
-    return droppableId.startsWith(GROUPING_COLUMN_DROPPABLE_PREFIX);
+    return droppableId.startsWith(Constants.GROUPING_COLUMN_PREFIX);
   }
 
   updateStateForCanceledSourceDrop(source, draggableId) {

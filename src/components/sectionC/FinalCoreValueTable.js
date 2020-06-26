@@ -19,6 +19,10 @@ const Title = styled.h3`
   padding-left: 8px;
 `;
 
+const Highlight = styled.span`
+  color: #e04b11;
+`;
+
 class FinalCoreValueTable extends React.Component {
   coreValueText(coreValueId) {
     const coreValues = this.props.coreValues;
@@ -31,7 +35,11 @@ class FinalCoreValueTable extends React.Component {
     const columns = Object.keys(finalFive);
     return (
       <Container>
-        <Title>Your core values are...</Title>
+        <Title>
+          <span>Your </span>
+          <Highlight>core </Highlight> 
+          <span>values are...</span>
+        </Title>
         {columns.map((column, index) => (
           <FinalCoreValueRow
             key={finalFive[column]} 

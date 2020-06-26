@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GroupingColumnPanel from './GroupingColumnPanel';
 import ContinueButton from './ContinueButton';
-
-const DEFAULT_NUMBER_COLUMNS = 5;
+import * as Constants from '../../constants';
 
 const Container = styled.div`
   text-align: center;
@@ -27,7 +26,7 @@ class MiddleSection extends React.Component {
                                     && selections.length === allColumnValues.length 
                                     && selections.every(selection => allColumnValues.includes(selection));
     const isContinueButtonEnabled = areAllSelectionsGrouped 
-                                    && Object.keys(topFiveCoreValues).length === DEFAULT_NUMBER_COLUMNS
+                                    && Object.keys(topFiveCoreValues).length === Constants.DEFAULT_NUMBER_COLUMNS
                                     && !hasGroupedCoreValues
                                     ? true : false;
 

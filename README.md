@@ -22,7 +22,7 @@
   - [x] Only allow 1 primary core value selection per column, reset styles when new one is selected
   - [x] Require primary core value in all columns to be picked before enabling continue button
   - [x] Once bottom panel appears on page, never re-hide it
-- [ ] Add textbox for actionable core value statement
+- [x] Add textbox for actionable core value statement
 - [ ] Logo - Update to say "My Core Values"
 - [ ] Add landing page (and [route](https://reacttraining.com/react-router/web/api/Link/to-object))
 - [ ] Add tooltips
@@ -39,7 +39,7 @@
   - [ ] Organize files in sensible directory structure. Examples: [1](https://reactjs.org/docs/faq-structure.html), [2](https://www.robinwieruch.de/react-folder-structure)
   - [ ] Use classes & reusable components
   - [ ] Use events
-  - [ ] Centralized constants and utils
+  - [x] Centralized constants and utils
 - [ ] Draggable interactions:
   - [ ] onBeforeDragStart or onDragStart while in column, hide plus button?
   - [ ] How to prevent draggable from snapping back into column on a false drop?
