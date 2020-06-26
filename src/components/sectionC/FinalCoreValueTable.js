@@ -4,10 +4,10 @@ import FinalCoreValueRow from './FinalCoreValueRow';
 
 const Container = styled.div`
   margin: 8px;
-  border: 1.5pt solid #c9d3dd;
+  border: 1px solid #c9d3dd;
   background-color: white;
   border-radius: 4px;
-  width: 400px;
+  width: 300px;
   min-height: 300px;
   display: 'flex';
   flex-direction: column;
@@ -36,9 +36,7 @@ class FinalCoreValueTable extends React.Component {
     return (
       <Container>
         <Title>
-          <span>Your </span>
-          <Highlight>core </Highlight> 
-          <span>values are...</span>
+          Your <Highlight>core</Highlight> values are...
         </Title>
         {columns.map((column, index) => (
           <FinalCoreValueRow

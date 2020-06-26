@@ -23,9 +23,9 @@
   - [x] Require primary core value in all columns to be picked before enabling continue button
   - [x] Once bottom panel appears on page, never re-hide it
 - [x] Add textbox for actionable core value statement
-- [ ] Logo - Update to say "My Core Values"
 - [ ] Add landing page (and [route](https://reacttraining.com/react-router/web/api/Link/to-object))
 - [ ] Add tooltips
+- [ ] Logo - Update to say "My Core Values"
 - [ ] Add Navigation bar, see [example](https://github.com/M0nica/ambition-fund-website/blob/master/src/components/common/navigation/navigation.jsx)
 - [ ] Add footer
 - [ ] Update content
@@ -54,6 +54,7 @@
 - [ ] Use redux?
 - [ ] Responsive design w/ [Tailwind CSS](https://tailwindcss.com/)m [docs](https://nerdcave.com/tailwind-cheat-sheet)
 - [ ] Fix spacing/padding (use Bootstrap?)
+- [ ] Use Bootstrap icons? [here](https://icons.getbootstrap.com/icons/plus/)
 - [ ] Can grouping column contents be centered? May require more complex CSS or animation finagling. [See here](https://github.com/atlassian/react-beautiful-dnd/issues/1851)
 - [ ] Dragging outside of the column snaps back to column first before appearing in core values panel - FIX THIS
 - [ ] Add ability to add new columns?

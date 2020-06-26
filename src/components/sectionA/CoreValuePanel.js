@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
 import CoreValue from '../common/CoreValue';
+import * as Constants from '../../constants';
+import { Hints } from 'intro.js-react';
 
 const Container = styled.div`
   border: none;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+`;
+
+const StepOneHint = styled.div.attrs(props => ({ className: 'stepOne' }))`
 `;
 
 const CoreValueParent = styled.div`
@@ -33,65 +38,76 @@ const Placeholder = styled.div`
   display: ${props => (props.hasStartedDrag || props.hasCompletedDrag ? 'block' : 'none')};
 `;
 
-const CORE_VALUE_DROPPABLE_PREFIX = 'parent-';
+const CoreValuePanel = ({
+  coreValues,
+  selections,
+  hasGroupedCoreValues,
+  updateSelections,
+  ...props
+}) => {
+  const [hintsEnabled] = useState(true);
+  const [hints] = useState([
+    {
+      element: ".stepOne",
+      hint: "<strong>Start by selecting every word</strong> that resonates strongly as a core value. Don't overthink it. Give yourself no more than 5 minutes.",
+      hintPosition: "middle-right"
+    }
+  ]);
 
-class CoreValuePanel extends React.Component {
-  isSelected(coreValue) {
-    const selections = this.props.selections;
-    return selections.includes(coreValue);
+  const IS_DROP_ENABLED = false;
+
+  const isSelected = (coreValueId) => {
+    return selections.includes(coreValueId);
   }
 
-  render() {
-    const isDropDisabled = true;
-    const coreValues = this.props.coreValues;
-    const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
-
-    return (
-      <Container
-        hasGroupedCoreValues={hasGroupedCoreValues}
-      >
-        {coreValues.map((coreValue, index) => (
-          <Droppable
-            droppableId={`${CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
-            key={`${CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
-            isDropDisabled={isDropDisabled}
-          >
-            {(provided) => (
-              <CoreValueParent
-                ref={provided.innerRef}
-                {...provided.droppableProps}
+  return (
+    <Container hasGroupedCoreValues={hasGroupedCoreValues}>
+      <Hints
+        enabled={hintsEnabled}
+        hints={hints}
+      />
+      <StepOneHint/>
+      {coreValues.map((coreValue, index) => (
+        <Droppable
+          droppableId={`${Constants.CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
+          key={`${Constants.CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
+          isDropDisabled={!IS_DROP_ENABLED}
+        >
+          {(provided) => (
+            <CoreValueParent
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
+              <Placeholder
+                hasStartedDrag={coreValue.hasStartedDrag}
+                hasCompletedDrag={coreValue.hasCompletedDrag}
+                hasCanceledDrag={coreValue.hasCanceledDrag}
               >
-                <Placeholder
-                  hasStartedDrag={coreValue.hasStartedDrag}
-                  hasCompletedDrag={coreValue.hasCompletedDrag}
-                  hasCanceledDrag={coreValue.hasCanceledDrag}
-                >
-                  {coreValue.text}
-                </Placeholder>
-                <CoreValueWrapper
-                  hasStartedDrag={coreValue.hasStartedDrag}
-                  hasCompletedDrag={coreValue.hasCompletedDrag}
-                  hasCanceledDrag={coreValue.hasCanceledDrag}
-                >
-                  <CoreValue
-                    index={index}
-                    coreValueId={coreValue.id}
-                    text={coreValue.text}
-                    hasGroupedCoreValues={hasGroupedCoreValues}
-                    selected={this.isSelected(coreValue.id)}
-                    updateSelections={this.props.updateSelections}
-                  />
-                </CoreValueWrapper>
-                <div style={{ display: 'none' }}>
-                  {provided.placeholder}
-                </div>
-              </CoreValueParent>
-            )}
-          </Droppable>
-        ))}
-      </Container>
-    )
-  }
-}
+                {coreValue.text}
+              </Placeholder>
+              <CoreValueWrapper
+                hasStartedDrag={coreValue.hasStartedDrag}
+                hasCompletedDrag={coreValue.hasCompletedDrag}
+                hasCanceledDrag={coreValue.hasCanceledDrag}
+              >
+                <CoreValue
+                  index={index}
+                  coreValueId={coreValue.id}
+                  text={coreValue.text}
+                  hasGroupedCoreValues={hasGroupedCoreValues}
+                  selected={isSelected(coreValue.id)}
+                  updateSelections={updateSelections}
+                />
+              </CoreValueWrapper>
+              <div style={{ display: 'none' }}>
+                {provided.placeholder}
+              </div>
+            </CoreValueParent>
+          )}
+        </Droppable>
+      ))}
+    </Container>
+  )
+};
 
 export default CoreValuePanel;

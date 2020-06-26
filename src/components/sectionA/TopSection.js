@@ -14,32 +14,33 @@ const Container = styled.div`
   pointer-events: ${props => (props.hasGroupedCoreValues ? 'none' : 'auto')};
 `;
 
-class TopSection extends React.Component {
-  render() {
-    const hasSelectedCoreValues = this.props.hasSelectedCoreValues;
-    const hasGroupedCoreValues = this.props.hasGroupedCoreValues;
-    const selections = this.props.selections;
-    const isContinueButtonEnabled = (selections.length && !hasSelectedCoreValues) ? true : false;
+const TopSection = ({
+  hasSelectedCoreValues,
+  hasGroupedCoreValues,
+  coreValues,
+  selections,
+  updateSelections,
+  displayMiddleSection,
+  ...props
+}) => {
+  const isContinueButtonEnabled = (selections.length && !hasSelectedCoreValues) ? true : false;
 
-    return (
-      <Container
-        hasGroupedCoreValues = {hasGroupedCoreValues}
-      >
-        <Header/>
-        <CoreValuePanel 
-          coreValues={this.props.coreValues}
-          selections={selections}
-          updateSelections={this.props.updateSelections}
-          hasGroupedCoreValues={hasGroupedCoreValues}
-        />
-        <ContinueButton 
-          selections={selections} 
-          shouldActivate={isContinueButtonEnabled}
-          displayMiddleSection={this.props.displayMiddleSection}
-        />
-      </Container>
-    );
-  }
-}
+  return (
+    <Container hasGroupedCoreValues={hasGroupedCoreValues}>
+      <Header />
+      <CoreValuePanel
+        coreValues={coreValues}
+        selections={selections}
+        updateSelections={updateSelections}
+        hasGroupedCoreValues={hasGroupedCoreValues}
+      />
+      <ContinueButton
+        selections={selections}
+        shouldActivate={isContinueButtonEnabled}
+        displayMiddleSection={displayMiddleSection}
+      />
+    </Container>
+  );
+};
 
 export default TopSection;

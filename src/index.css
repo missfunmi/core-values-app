@@ -37,9 +37,37 @@ h1 {
 
 h3 {
   font-family: 'playfair_displaybold', serif;
-  font-size: 32px;
+  font-size: 28px;
 }
 
 body {
   font-family: 'open_sanslight', sans-serif;
+}
+
+.introjs-tooltip {
+  background-color: #3d8af7;
+  color: white;
+  font-size: 13px;
+}
+
+.introjs-arrow.top {
+  border-bottom-color: #3d8af7;
+}
+
+a.introjs-button {
+  background-color: #3b4754;
+  color: white;
+  text-shadow: none;
+  border: none;
+  background-image: none;
+  font: 12px 'open_sanslight', sans-serif;
+  float: right;
+  margin-right: 6px;
+}
+
+a.introjs-button:hover {
+  color: white;
+  border-color: #3b4754;
+  background-color: #3b4754;
+  box-shadow: none;
 }
