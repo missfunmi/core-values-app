@@ -1,4 +1,4 @@
-const valuesData = [ 
+export const valuesData = [ 
   'abundance',
   'acceptance',
   'accountability',
@@ -126,5 +126,3 @@ const valuesData = [
   'wisdom',
   'zeal'
 ];
-
-export default valuesData;

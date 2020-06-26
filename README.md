@@ -25,6 +25,7 @@
 - [x] Add textbox for actionable core value statement
 - [ ] Add landing page (and [route](https://reacttraining.com/react-router/web/api/Link/to-object))
 - [ ] Add tooltips
+  - [x] Use state to keep track of if hint has been shown & hidden
 - [ ] Logo - Update to say "My Core Values"
 - [ ] Add Navigation bar, see [example](https://github.com/M0nica/ambition-fund-website/blob/master/src/components/common/navigation/navigation.jsx)
 - [ ] Add footer
@@ -73,6 +74,10 @@
 - [ ] What's this scroll-linked position error?
   ````
   This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://developer.mozilla.org/docs/Mozilla/Performance/ScrollLinkedEffects for further details and to join the discussion on related tools and features!
+  ````
+= [ ] Another error to investigate:
+  ````
+  This page uses the non standard property “zoom”. Consider using calc() in the relevant property values, or using “transform” along with “transform-origin: 0 0”.
   ````
 
 ## Performance

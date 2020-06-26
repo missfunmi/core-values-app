@@ -4,6 +4,7 @@ import { Droppable } from 'react-beautiful-dnd';
 import CoreValue from '../common/CoreValue';
 import * as Constants from '../../constants';
 import { Hints } from 'intro.js-react';
+import { hintsData } from '../../hints';
 
 const Container = styled.div`
   border: none;
@@ -12,7 +13,9 @@ const Container = styled.div`
   justify-content: center;
 `;
 
-const StepOneHint = styled.div.attrs(props => ({ className: 'stepOne' }))`
+const HintOne = styled.div.attrs(props => ({ className: 'hint-one' }))`
+  margin-left: 10px;
+  margin-right: 10px;
 `;
 
 const CoreValueParent = styled.div`
@@ -45,28 +48,28 @@ const CoreValuePanel = ({
   updateSelections,
   ...props
 }) => {
-  const [hintsEnabled] = useState(true);
-  const [hints] = useState([
-    {
-      element: ".stepOne",
-      hint: "<strong>Start by selecting every word</strong> that resonates strongly as a core value. Don't overthink it. Give yourself no more than 5 minutes.",
-      hintPosition: "middle-right"
-    }
-  ]);
-
   const IS_DROP_ENABLED = false;
+  const [hintsEnabled, setHintsEnabled] = useState(true);
 
   const isSelected = (coreValueId) => {
     return selections.includes(coreValueId);
   }
 
+  const suppressHint = () => {
+    setHintsEnabled(false);
+  };
+
   return (
     <Container hasGroupedCoreValues={hasGroupedCoreValues}>
       <Hints
         enabled={hintsEnabled}
-        hints={hints}
+        hints={hintsData}
+        onClose={suppressHint}
+        options={{
+          hintButtonLabel: Constants.DEFAULT_HINTS_BUTTON_LABEL
+        }}
       />
-      <StepOneHint/>
+      <HintOne />
       {coreValues.map((coreValue, index) => (
         <Droppable
           droppableId={`${Constants.CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}

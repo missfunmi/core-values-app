@@ -4,7 +4,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import TopSection from './sectionA/TopSection';
 import MiddleSection from './sectionB/MiddleSection';
 import BottomSection from './sectionC/BottomSection';
-import valuesData from '../values-data';
+import { valuesData } from '../values-data';
 import * as Constants from '../constants';
 
 const Container = styled.div`
