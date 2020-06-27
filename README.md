@@ -29,21 +29,25 @@
   - [x] Use state to keep track of if hint has been shown & hidden
   - [x] Use custom css instead of force-overriding the library css: [here](https://github.com/usablica/intro.js/blob/master/example/custom-class/index.html)
 - [x] Logo - Make background transparent -> 👉🏾 Gimp
+- [x] Add illustrations
+- [x] Analytics? [goatcounter](https://www.goatcounter.com/)
 - [x] Add footer
   - [x] FIX: Overlaps with final core values when there are 5 in the list
   - [x] But Logo goes off screen as more elements are added to UI! Ugh!
-  - [ ] Make footer stick to bottom of browser without overlapping content
+  - [x] Make footer stick to bottom of browser without overlapping content
+- [ ] New font
+- [ ] Scroll to Final Core Values table on clicking second continue button
 - [ ] Email or tweet your core values - create an image?
 - [ ] Update content
-- [ ] Minor spacing & responsive UI fixes
-- [x] Add illustrations
-- [x] Analytics? [goatcounter](https://www.goatcounter.com/)
+- [ ] Basic spacing & other responsive UI fixes
+- [ ] Add proper README and move open items to github issues or separate file
 - [ ] Browser-specific issues:
   - [ ] Safari (mobile & desktop) - dragging core value from main panel leaves whitespace next to placeholder
 
 ## v2
 - [ ] Tests: [testing-library](https://github.com/testing-library/react-testing-library)
 - [ ] Adjust styles & animations for other browsers (Chrome, Safari, mobile browsers)
+- [ ] Switch to [CSS Grid Layout](https://css-tricks.com/snippets/css/complete-guide-grid/)
 - [ ] Code refactor:
   - [ ] Organize files in sensible directory structure. Examples: [1](https://reactjs.org/docs/faq-structure.html), [2](https://www.robinwieruch.de/react-folder-structure)
   - [ ] Use classes & reusable components
@@ -51,21 +55,22 @@
   - [ ] Update components to function style
   - [x] Centralized constants and utils
 - [ ] Add a reset button to clear all grouped items back to the main panel
+- [ ] More illustrations?
 - [ ] Hints update:
   - [ ] Add button to permanently hide hints
   - [ ] Use localStorage? Cookies?
-  - [ ] Fix spacing of hints
+  - [ ] Fix spacing of hints?
   - [ ] Customize positioning of hint arrows - "data-position" attr doesn't seem to work for hints...
 - [ ] Draggable interactions:
   - [ ] onBeforeDragStart or onDragStart while in column, hide plus button?
   - [ ] How to prevent draggable from snapping back into column on a false drop?
 - [ ] Local persistence?
 - [ ] Add sticky Navigation bar, see [example](https://github.com/M0nica/ambition-fund-website/blob/master/src/components/common/navigation/navigation.jsx)
-- [ ] Enhanced footer?
+  - [ ] Scroll to sections on clicking Continue button
+  - [ ] Check out 'react-scrollspy' and 'react-anchor-link-smooth-scroll'
 - [ ] License
 - [ ] CI/CD
 - [ ] Logging library [logrocket](https://logrocket.com/)
-- [ ] Scroll to sections on click
 
 ## Future
 - [ ] Use redux?
