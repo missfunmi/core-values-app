@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../../images/logo.png';
+import { Link } from 'react-router-dom';
+import logo from '../images/logo.png';
 
-const Container = styled.div`
-  margin-bottom: 14px;
-`;
+const Container = styled.div``;
+
 const Title = styled.img`
   padding: 8px;
   max-width: 40%;
   height: auto;
+  cursor: pointer; 
 `;
+
 const Text = styled.div`
   font-size: 14px;
   color: #798da3;
@@ -20,7 +22,7 @@ class Header extends React.Component {
   render() {
     return (
       <Container>
-        <Title src={logo} alt='My Core Values'/>
+        <Link exact to='/'><Title src={logo} alt='Your Core Values'/></Link>
         <Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</Text>
       </Container>
     );

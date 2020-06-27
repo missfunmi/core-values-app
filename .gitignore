@@ -26,5 +26,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # temporary
-src/components/Footer.js
 src/components/Navigation.js

@@ -5,11 +5,16 @@ import CoreValue from '../common/CoreValue';
 import * as Constants from '../../constants';
 import { HintOne } from '../common/OnboardingHints';
 
+const Wrapper = styled.div`
+  margin-top: 20px;
+`;
+
 const Container = styled.div`
   border: none;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  pointer-events: ${props => (props.hasGroupedCoreValues ? 'none' : 'auto')};
 `;
 
 const CoreValueParent = styled.div`
@@ -48,7 +53,10 @@ const CoreValuePanel = ({
   }
 
   return (
-    <Container hasGroupedCoreValues={hasGroupedCoreValues}>
+    <Wrapper>
+    <Container 
+      hasGroupedCoreValues={hasGroupedCoreValues}
+    >
       <HintOne />
       {coreValues.map((coreValue, index) => (
         <Droppable
@@ -90,6 +98,7 @@ const CoreValuePanel = ({
         </Droppable>
       ))}
     </Container>
+    </Wrapper>
   )
 };
 

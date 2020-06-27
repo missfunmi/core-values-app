@@ -23,25 +23,26 @@
   - [x] Require primary core value in all columns to be picked before enabling continue button
   - [x] Once bottom panel appears on page, never re-hide it
 - [x] Add textbox for actionable core value statement
-- [ ] Add landing page (and [route](https://reacttraining.com/react-router/web/api/Link/to-object))
+- [x] Add landing page (and [route](https://reacttraining.com/react-router/web/api/Link/to-object))
 - [x] Add tooltips
   - [x] Use state to keep track of if hint has been shown & hidden
   - [x] Use custom css instead of force-overriding the library css: [here](https://github.com/usablica/intro.js/blob/master/example/custom-class/index.html)
-- [ ] Logo - Update to say "My Core Values"
-- [ ] Add Navigation bar, see [example](https://github.com/M0nica/ambition-fund-website/blob/master/src/components/common/navigation/navigation.jsx)
-- [ ] Add footer
+- [x] Logo - Make background transparent -> 👉🏾 Gimp
+- [x] Add sticky footer
 - [ ] Update content
-- [ ] Email or tweet your core values
+- [ ] Email or tweet your core values - create an image?
 - [ ] Minor spacing & responsive UI fixes
-- [ ] Add illustrations
-- [ ] Analytics? [goatcounter](https://www.goatcounter.com/), [matomo](https://news.ycombinator.com/item?id=23560823), [goaccess](https://goaccess.io/), [nytimes](https://github.com/NYTimes/react-tracking), [larger round-up](https://lwn.net/SubscriberLink/822568/61d29096a4012e06/)
+- [x] Add illustrations
+- [x] Analytics? [goatcounter](https://www.goatcounter.com/), [matomo](https://news.ycombinator.com/item?id=23560823), [goaccess](https://goaccess.io/), [nytimes](https://github.com/NYTimes/react-tracking) or [here](https://open.nytimes.com/introducing-react-tracking-declarative-tracking-for-react-apps-2c76706bb79a), [larger round-up](https://lwn.net/SubscriberLink/822568/61d29096a4012e06/)
 
 ## v2
 - [ ] Tests: [testing-library](https://github.com/testing-library/react-testing-library)
+- [ ] Adjust styles & animations for other browsers (Chrome, Safari, mobile browsers)
 - [ ] Code refactor:
   - [ ] Organize files in sensible directory structure. Examples: [1](https://reactjs.org/docs/faq-structure.html), [2](https://www.robinwieruch.de/react-folder-structure)
   - [ ] Use classes & reusable components
   - [ ] Use events
+  - [ ] Update components to function style
   - [x] Centralized constants and utils
 - [ ] Add a reset button to clear all grouped items back to the main panel
 - [ ] Hints update:
@@ -53,10 +54,12 @@
   - [ ] onBeforeDragStart or onDragStart while in column, hide plus button?
   - [ ] How to prevent draggable from snapping back into column on a false drop?
 - [ ] Local persistence?
+- [ ] Add sticky Navigation bar, see [example](https://github.com/M0nica/ambition-fund-website/blob/master/src/components/common/navigation/navigation.jsx)
+- [ ] Enhanced footer?
 - [ ] License
 - [ ] CI/CD
 - [ ] Logging library [logrocket](https://logrocket.com/)
-- [ ] Scroll to sections on button click
+- [ ] Scroll to sections on click
 
 ## Future
 - [ ] Use redux?

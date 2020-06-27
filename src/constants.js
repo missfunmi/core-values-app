@@ -5,7 +5,7 @@ export const CORE_VALUE_DROPPABLE_PREFIX = 'parent-';
 export const GROUPING_COLUMN_PREFIX = 'grouping-column-';
 
 // Columns
-export const DEFAULT_NUMBER_COLUMNS = 2;
+export const DEFAULT_NUMBER_COLUMNS = 5;
 
 // Hints
 export const DEFAULT_HINTS_BUTTON_LABEL = 'Got it!';

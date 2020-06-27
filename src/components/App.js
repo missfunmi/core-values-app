@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
 import TopSection from './sectionA/TopSection';
+import Header from './Header';
 import MiddleSection from './sectionB/MiddleSection';
 import BottomSection from './sectionC/BottomSection';
 import { OnboardingHints } from './common/OnboardingHints';
@@ -9,12 +10,20 @@ import { valuesData } from '../values-data';
 import { hintsData } from '../hints';
 import * as Constants from '../constants';
 
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  + div {
+    background-color: #ffffff;
+  }
+`;
+
 const Container = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 `;
 
 class App extends React.Component {
@@ -166,12 +175,12 @@ class App extends React.Component {
     if (updatedSelections.includes(draggableId)) {
       const indexToRemove = updatedSelections.indexOf(draggableId);
       updatedSelections.splice(indexToRemove, 1);
-    } 
-    
+    }
+
     let startColumn = this.state.groupingColumns[source.droppableId];
     let startColumnCoreValues = Array.from(startColumn.coreValues);
     startColumnCoreValues.splice(source.index, 1);
-    
+
     const newState = {
       ...this.state,
       selections: updatedSelections,
@@ -186,7 +195,7 @@ class App extends React.Component {
   }
 
   updateStateForNoopDestinationDrop(destination, draggableId) {
-    const newCoreValues = 
+    const newCoreValues =
       this.isGroupingColumn(destination.droppableId)
         ? this.updateCoreValue(draggableId, false, true, false)
         : this.updateCoreValue(draggableId, false, false, true);
@@ -222,10 +231,10 @@ class App extends React.Component {
     const finishColumn = this.state.groupingColumns[destination.droppableId];
 
     let finishColumnCoreValues = Array.from(finishColumn.coreValues);
-    let startColumnCoreValues = 
+    let startColumnCoreValues =
       (startColumn === finishColumn) ? finishColumnCoreValues
         : startColumn ? Array.from(startColumn.coreValues)
-        : [];
+          : [];
 
     startColumnCoreValues.splice(source.index, 1);
     finishColumnCoreValues.splice(destination.index, 0, draggableId);
@@ -249,35 +258,38 @@ class App extends React.Component {
         onBeforeDragStart={this.onBeforeDragStart}
         onDragEnd={this.onDragEnd}
       >
-        <Container>
-          <OnboardingHints
-            hints={this.state.activeHints}
-            suppressHints={this.suppressHints}
-          />
-          <TopSection
-            coreValues={this.state.coreValues}
-            selections={this.state.selections}
-            hasSelectedCoreValues={this.state.hasSelectedCoreValues}
-            hasGroupedCoreValues={this.state.hasGroupedCoreValues}
-            updateSelections={this.updateSelections}
-            displayMiddleSection={this.displayMiddleSection}
-          />
-          <MiddleSection 
-            coreValues={this.state.coreValues} 
-            selections={this.state.selections}
-            columns={this.state.groupingColumns}
-            topFiveCoreValues={this.state.topFiveCoreValues}
-            hasSelectedCoreValues={this.state.hasSelectedCoreValues}
-            hasGroupedCoreValues={this.state.hasGroupedCoreValues}
-            displayBottomSection={this.displayBottomSection}
-            updateTopFiveCoreValues={this.updateTopFiveCoreValues}
-          />
-          <BottomSection
-            coreValues={this.state.coreValues}
-            topFiveCoreValues={this.state.topFiveCoreValues}
-            hasGroupedCoreValues={this.state.hasGroupedCoreValues}
-          />
-        </Container>
+        <Wrapper>
+          <Container>
+            <OnboardingHints
+              hints={this.state.activeHints}
+              suppressHints={this.suppressHints}
+            />
+            <Header />
+            <TopSection
+              coreValues={this.state.coreValues}
+              selections={this.state.selections}
+              hasSelectedCoreValues={this.state.hasSelectedCoreValues}
+              hasGroupedCoreValues={this.state.hasGroupedCoreValues}
+              updateSelections={this.updateSelections}
+              displayMiddleSection={this.displayMiddleSection}
+            />
+            <MiddleSection
+              coreValues={this.state.coreValues}
+              selections={this.state.selections}
+              columns={this.state.groupingColumns}
+              topFiveCoreValues={this.state.topFiveCoreValues}
+              hasSelectedCoreValues={this.state.hasSelectedCoreValues}
+              hasGroupedCoreValues={this.state.hasGroupedCoreValues}
+              displayBottomSection={this.displayBottomSection}
+              updateTopFiveCoreValues={this.updateTopFiveCoreValues}
+            />
+            <BottomSection
+              coreValues={this.state.coreValues}
+              topFiveCoreValues={this.state.topFiveCoreValues}
+              hasGroupedCoreValues={this.state.hasGroupedCoreValues}
+            />
+          </Container>
+        </Wrapper>
       </DragDropContext>
     );
   }

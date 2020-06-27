@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from './Header';
 import CoreValuePanel from './CoreValuePanel';
 import ContinueButton from './ContinueButton';
 
@@ -11,7 +10,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  pointer-events: ${props => (props.hasGroupedCoreValues ? 'none' : 'auto')};
 `;
 
 const TopSection = ({
@@ -24,10 +22,10 @@ const TopSection = ({
   ...props
 }) => {
   const isContinueButtonEnabled = (selections.length && !hasSelectedCoreValues) ? true : false;
-
   return (
-    <Container hasGroupedCoreValues={hasGroupedCoreValues}>
-      <Header />
+    <Container 
+      hasGroupedCoreValues={hasGroupedCoreValues}
+    >
       <CoreValuePanel
         coreValues={coreValues}
         selections={selections}

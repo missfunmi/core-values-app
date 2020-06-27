@@ -30,6 +30,10 @@
   font-style: normal;
 }
 
+html, body, #root {
+  height: 100%
+}
+
 h1 {
   font-family: 'playfair_displaybold', serif;
   font-size: 75px;
@@ -42,6 +46,14 @@ h3 {
 
 body {
   font-family: 'open_sanslight', sans-serif;
+}
+
+button {
+  font-family: 'open_sansregular', sans-serif;
+}
+
+a:focus {
+  outline: none;
 }
 
 /* Onboarding Hints */
