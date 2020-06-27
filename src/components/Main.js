@@ -13,7 +13,7 @@ const Container = styled.div`
 const Main = () => {
   return (
     <Container>
-      <Div100h style={{'min-height': 'calc(100rvh - 50px)', 'padding-bottom': '0'}}>
+      <Div100h style={{'minHeight': 'calc(100rvh - 50px)', 'paddingBottom': '0'}}>
         <Switch>
           <Route exact path='/' component={Home}></Route>
           <Route exact path='/start' component={App}></Route>
