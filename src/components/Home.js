@@ -15,27 +15,28 @@ const Container = styled.div`
 
 const Logo = styled.img`
   padding: 8px;
-  max-width: 60%;
+  max-width: 50%;
   height: auto;
+  margin-top: -10px;
 `;
 
 const Reading = styled.img`
   padding: 8px;
-  max-width: 50%;
+  max-width: 40%;
   height: auto;
-  margin-top: 50px;
+  margin-top: 100px;
 `;
 
 const Subtext = styled.div`
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   width: 80%;
 `;
 
 const Button = styled.button`
   color: #ffffff;
   border-radius: 24px;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 10px;
   width: 150px;
   padding: 6px 25px;
@@ -52,7 +53,7 @@ const Home = () => {
       <Reading src={reading} alt='Girl reading a book' />
       <Logo src={logo} alt='Your Core Values' />
       <Subtext>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Discover your personal core values and get inspired to live by them every day.
       </Subtext>
       <Link to='/start'><Button>Get Started</Button></Link>
     </Container>
