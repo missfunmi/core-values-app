@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 import reading from '../images/reading.png';
+import Footer from './Footer';
 
 const Container = styled.div`
+  height: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -54,6 +56,7 @@ const Home = () => {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       </Subtext>
       <Link to='/start'><Button>Get Started</Button></Link>
+      <Footer />
     </Container>
   );
 };

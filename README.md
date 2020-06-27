@@ -29,8 +29,10 @@
   - [x] Use state to keep track of if hint has been shown & hidden
   - [x] Use custom css instead of force-overriding the library css: [here](https://github.com/usablica/intro.js/blob/master/example/custom-class/index.html)
 - [x] Logo - Make background transparent -> 👉🏾 Gimp
-- [x] Add sticky footer
+- [x] Add footer
   - [x] FIX: Overlaps with final core values when there are 5 in the list
+  - [x] But Logo goes off screen as more elements are added to UI! Ugh!
+  - [ ] Make footer stick to bottom of browser without overlapping content
 - [ ] Email or tweet your core values - create an image?
 - [ ] Update content
 - [ ] Minor spacing & responsive UI fixes

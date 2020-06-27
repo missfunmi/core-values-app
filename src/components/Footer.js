@@ -5,10 +5,10 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 const Container = styled.div`
   width: 100%;
+  height: 40px;
   display: flex;
   justify-content: flex-end;
   align-content: flex-end;
-  margin-top: auto;
 `;
 
 const Blurb = styled.div`

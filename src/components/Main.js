@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 import App from './App';
 import Home from './Home';
-import Footer from './Footer';
 
 const Container = styled.div`
-  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,7 +22,6 @@ const Main = () => {
         <Route exact path='/' component={Home}></Route>
         <Route exact path='/start' component={App}></Route>
       </Switch>
-      <Footer/>
     </Container>
   );
 };

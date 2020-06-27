@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
 import TopSection from './sectionA/TopSection';
 import Header from './Header';
+import Footer from './Footer';
 import MiddleSection from './sectionB/MiddleSection';
 import BottomSection from './sectionC/BottomSection';
 import { OnboardingHints } from './common/OnboardingHints';
@@ -12,8 +13,8 @@ import * as Constants from '../constants';
 
 const Wrapper = styled.div`
   width: 100%;
+  height: 100%;
   background-color: #ffffff;
-  flex: 1;
   padding-bottom: 40px;
   + div {
     background-color: #ffffff;
@@ -289,6 +290,7 @@ class App extends React.Component {
               topFiveCoreValues={this.state.topFiveCoreValues}
               hasGroupedCoreValues={this.state.hasGroupedCoreValues}
             />
+            <Footer/>
           </Container>
         </Wrapper>
       </DragDropContext>
