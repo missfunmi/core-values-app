@@ -90,6 +90,8 @@
 
 ## Design/Moqups
 - [ ] Add button to clear all selections back to Top Panel
+- [ ] Updated home page
+  - [ ] Screenshots of the final core value selection
 - [ ] Design for responsive UI. See [here](https://medium.com/styled-components/how-to-create-responsive-ui-with-styled-components-c6b71a3ce172)
 - [ ] Mobile-friendly version?
 
