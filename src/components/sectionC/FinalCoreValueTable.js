@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FinalCoreValueRow from './FinalCoreValueRow';
-import { HintThree } from '../common/OnboardingHints';
+import { HintFour } from '../common/OnboardingHints';
 
 const Container = styled.div`
   margin: 8px;
@@ -18,6 +18,7 @@ const Container = styled.div`
 const Title = styled.h3`
   text-align: left;
   padding-left: 8px;
+  margin-top: 8px;
 `;
 
 const Highlight = styled.span`
@@ -36,14 +37,14 @@ class FinalCoreValueTable extends React.Component {
     const columns = Object.keys(finalFive);
     return (
       <Container>
-        <HintThree/>
+        <HintFour />
         <Title>
           Your <Highlight>core</Highlight> values are...
         </Title>
         {columns.map((column, index) => (
           <FinalCoreValueRow
-            key={finalFive[column]} 
-            index={index} 
+            key={finalFive[column]}
+            index={index}
             coreValueId={finalFive[column]}
             text={this.coreValueText(finalFive[column])}
           />

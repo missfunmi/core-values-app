@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import GroupingColumn from './GroupingColumn';
 import * as Constants from '../../constants';
-import { HintTwo } from '../common/OnboardingHints';
+import { HintTwo, HintThree } from '../common/OnboardingHints';
 
 const Container = styled.div`
   border: none;
@@ -36,8 +36,9 @@ const GroupingColumnPanel = ({
 
   return (
     <Container>
-      <HintTwo />
       {groupingColumns}
+      <HintTwo />
+      <HintThree />
     </Container>
   );
 }

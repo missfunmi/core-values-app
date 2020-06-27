@@ -20,7 +20,7 @@ export const OnboardingHints = ({
           hintButtonLabel: Constants.DEFAULT_HINTS_BUTTON_LABEL,
           tooltipClass: Constants.CUSTOM_HINTS_CLASS,
           tooltipPosition: 'auto',
-          positionPrecedence: ['top', 'left', 'right', 'bottom']
+          positionPrecedence: ['right', 'top', 'bottom', 'left']
         }}
       />
     </div>
@@ -28,16 +28,19 @@ export const OnboardingHints = ({
 }
 
 export const HintOne = styled.div.attrs({ 
-  className: Constants.HINT_ONE,
-  "data-position": "top"
+  className: Constants.HINT_ONE  
 })``;
 
 export const HintTwo = styled.div.attrs({ 
-  className: Constants.HINT_TWO,
-  "data-position": "left"
+  className: Constants.HINT_TWO
 })``;
 
-export const HintThree = styled.div.attrs(props => ({ 
-  className: Constants.HINT_THREE,
-  "data-position": "right"
-}))``;
+export const HintThree = styled.div.attrs({ 
+  className: Constants.HINT_THREE
+})``;
+
+export const HintFour = styled.div.attrs({ 
+  className: Constants.HINT_FOUR
+})`
+  display: block;
+`;

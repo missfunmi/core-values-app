@@ -48,7 +48,7 @@
   - [ ] Add button to permanently hide hints
   - [ ] Use localStorage? Cookies?
   - [ ] Fix spacing of hints
-  - [ ] Fix positioning of hint arrows
+  - [ ] Customize positioning of hint arrows - "data-position" attr doesn't seem to work for hints...
 - [ ] Draggable interactions:
   - [ ] onBeforeDragStart or onDragStart while in column, hide plus button?
   - [ ] How to prevent draggable from snapping back into column on a false drop?
@@ -82,7 +82,7 @@
   ````
   This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://developer.mozilla.org/docs/Mozilla/Performance/ScrollLinkedEffects for further details and to join the discussion on related tools and features!
   ````
-= [ ] Another error to investigate:
+= [x] Another error to investigate -- culprit is intro.js library. Only exists for IE browsers. [Link](https://github.com/usablica/intro.js/blob/b46bbcd8af46be2ae3b43aba850334b12ff03cdb/introjs.css#L234)
   ````
   This page uses the non standard property “zoom”. Consider using calc() in the relevant property values, or using “transform” along with “transform-origin: 0 0”.
   ````

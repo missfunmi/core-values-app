@@ -67,10 +67,11 @@ class App extends React.Component {
   }
 
   suppressHints() {
-    this.setState({
-      ...this.state,
-      activeHints: []
-    });
+    let activeHints = this.state.activeHints;
+    if (activeHints.length) {
+      activeHints.shift();
+    }
+    this.setState({ ...this.state, activeHints });
   }
 
   updateTopFiveCoreValues(columnId, coreValueId) {
@@ -102,7 +103,7 @@ class App extends React.Component {
     this.setState({
       ...this.state,
       hasSelectedCoreValues: true,
-      activeHints: [hintsData[Constants.HINT_TWO]]
+      activeHints: [hintsData[Constants.HINT_TWO], hintsData[Constants.HINT_THREE]]
     });
   }
 
@@ -113,7 +114,7 @@ class App extends React.Component {
     this.setState({
       ...this.state,
       hasGroupedCoreValues: true,
-      activeHints: [hintsData[Constants.HINT_THREE]]
+      activeHints: [hintsData[Constants.HINT_FOUR]]
     });
   }
 

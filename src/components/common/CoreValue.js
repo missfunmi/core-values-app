@@ -13,7 +13,7 @@ const Bubble = styled.div`
                      '#798da3')};
   background-color: ${props => (props.isTopFive ? '#e04b11' : 
                                 props.selected ? '#3d8af7' : 
-                                props.hasGroupedCoreValues ? '#f9f9f9' : 
+                                props.hasGroupedCoreValues ? '#f2f2f2' : 
                                 '#ffffff')};
   border-color: ${props => (props.isTopFive ? '#e04b11' : 
                             props.selected ? '#3d8af7' : 
