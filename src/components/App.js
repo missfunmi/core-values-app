@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { DragDropContext } from 'react-beautiful-dnd';
 import TopSection from './sectionA/TopSection';
 import Header from './Header';
-import Footer from './Footer';
 import MiddleSection from './sectionB/MiddleSection';
 import BottomSection from './sectionC/BottomSection';
 import { OnboardingHints } from './common/OnboardingHints';
@@ -290,7 +289,6 @@ class App extends React.Component {
               topFiveCoreValues={this.state.topFiveCoreValues}
               hasGroupedCoreValues={this.state.hasGroupedCoreValues}
             />
-            <Footer/>
           </Container>
         </Wrapper>
       </DragDropContext>

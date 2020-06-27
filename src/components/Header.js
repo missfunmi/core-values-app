@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import logo from '../images/logo.png';
 
-const Container = styled.div``;
+const Container = styled.div`
+  text-align: center;
+`;
 
 const Title = styled.img`
   padding: 8px;
