@@ -10,7 +10,7 @@ const Section = styled.section`
 
 const Label = styled.div`
   color: ${props => (props.statement === '') ? '#798da3' : '#e04b11'};
-  font-style: ${props => (props.statement === '') ? 'italic' : 'none'};
+  font-style: ${props => (props.statement === '') ? 'italic' : 'normal'};
   padding: 5px;
   width: 90%;
   &:hover {
