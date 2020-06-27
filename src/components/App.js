@@ -12,8 +12,9 @@ import * as Constants from '../constants';
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
   background-color: #ffffff;
+  flex: 1;
+  padding-bottom: 40px;
   + div {
     background-color: #ffffff;
   }

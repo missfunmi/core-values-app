@@ -9,8 +9,8 @@ const Section = styled.section`
 `;
 
 const Label = styled.div`
-  color: #798da3;
-  font-style: italic;
+  color: ${props => (props.statement === '') ? '#798da3' : '#e04b11'};
+  font-style: ${props => (props.statement === '') ? 'italic' : 'none'};
   padding: 5px;
   width: 90%;
   &:hover {
@@ -70,6 +70,7 @@ const FinalCoreValueStatement = () => {
       ) : (
         <Label
           onClick={() => setEditing(true)}
+          statement={statement}
         >
           {text}
         </Label>

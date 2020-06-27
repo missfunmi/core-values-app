@@ -14,6 +14,7 @@ const Column = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  flex: 1;
 `;
 
 const InnerColumn = styled.div`

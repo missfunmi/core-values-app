@@ -9,9 +9,10 @@ const Container = styled.div`
   background-color: white;
   border-radius: 4px;
   width: 300px;
-  min-height: 300px;
+  min-height: 450px;
   display: 'flex';
   flex-direction: column;
+  flex: 1;
   padding: 10px 20px;
 `;
 

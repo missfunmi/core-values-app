@@ -9,7 +9,6 @@ const Container = styled.div`
   justify-content: flex-end;
   align-content: flex-end;
   margin-top: auto;
-  background-color: #11ffee00;
 `;
 
 const Blurb = styled.div`
