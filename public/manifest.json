@@ -1,6 +1,6 @@
 {
-  "short_name": "My Core Values App",
-  "name": "Interactive website to help you identify the values that are most important to you",
+  "short_name": "Core Values",
+  "name": "Identify your personal core values and be inspired to live by them every day.",
   "icons": [
     {
       "src": "favicon.ico",

@@ -38,10 +38,10 @@
 - [ ] New font
 - [ ] Scroll to Final Core Values table on clicking second continue button
 - [ ] Email or tweet your core values - create an image?
-- [ ] Update content
-  - [ ] Add mobile description text
+- [x] Update content
+  - [x] Add open graph metadata
 - [ ] Basic spacing & other responsive UI fixes
-- [ ] Add proper README and move open items to github issues or separate file
+- [x] Add proper README and move open items to github issues or separate file
 - [ ] Browser-specific issues:
   - [ ] Safari (mobile & desktop) - dragging core value from main panel leaves whitespace next to placeholder
 
@@ -101,7 +101,7 @@
   ````
   This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://developer.mozilla.org/docs/Mozilla/Performance/ScrollLinkedEffects for further details and to join the discussion on related tools and features!
   ````
-= [x] Another error to investigate -- culprit is intro.js library. Only exists for IE browsers. [Link](https://github.com/usablica/intro.js/blob/b46bbcd8af46be2ae3b43aba850334b12ff03cdb/introjs.css#L234)
+- [x] Another error to investigate -- culprit is intro.js library. Only exists for IE browsers. [Link](https://github.com/usablica/intro.js/blob/b46bbcd8af46be2ae3b43aba850334b12ff03cdb/introjs.css#L234)
   ````
   This page uses the non standard property “zoom”. Consider using calc() in the relevant property values, or using “transform” along with “transform-origin: 0 0”.
   ````
