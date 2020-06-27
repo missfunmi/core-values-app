@@ -29,7 +29,13 @@ export const OnboardingHints = ({
 
 export const HintOne = styled.div.attrs({ 
   className: Constants.HINT_ONE  
-})``;
+})`
+  float: left;
+  display: block;
+  left: 40px;
+  top: 100px;
+  position: absolute;
+`;
 
 export const HintTwo = styled.div.attrs({ 
   className: Constants.HINT_TWO

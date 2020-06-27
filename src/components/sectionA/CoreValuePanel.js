@@ -54,50 +54,50 @@ const CoreValuePanel = ({
 
   return (
     <Wrapper>
-    <Container 
-      hasGroupedCoreValues={hasGroupedCoreValues}
-    >
       <HintOne />
-      {coreValues.map((coreValue, index) => (
-        <Droppable
-          droppableId={`${Constants.CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
-          key={`${Constants.CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
-          isDropDisabled={!IS_DROP_ENABLED}
-        >
-          {(provided) => (
-            <CoreValueParent
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-            >
-              <Placeholder
-                hasStartedDrag={coreValue.hasStartedDrag}
-                hasCompletedDrag={coreValue.hasCompletedDrag}
-                hasCanceledDrag={coreValue.hasCanceledDrag}
+      <Container
+        hasGroupedCoreValues={hasGroupedCoreValues}
+      >
+        {coreValues.map((coreValue, index) => (
+          <Droppable
+            droppableId={`${Constants.CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
+            key={`${Constants.CORE_VALUE_DROPPABLE_PREFIX}${coreValue.id}`}
+            isDropDisabled={!IS_DROP_ENABLED}
+          >
+            {(provided) => (
+              <CoreValueParent
+                ref={provided.innerRef}
+                {...provided.droppableProps}
               >
-                {coreValue.text}
-              </Placeholder>
-              <CoreValueWrapper
-                hasStartedDrag={coreValue.hasStartedDrag}
-                hasCompletedDrag={coreValue.hasCompletedDrag}
-                hasCanceledDrag={coreValue.hasCanceledDrag}
-              >
-                <CoreValue
-                  index={index}
-                  coreValueId={coreValue.id}
-                  text={coreValue.text}
-                  hasGroupedCoreValues={hasGroupedCoreValues}
-                  selected={isSelected(coreValue.id)}
-                  updateSelections={updateSelections}
-                />
-              </CoreValueWrapper>
-              <div style={{ display: 'none' }}>
-                {provided.placeholder}
-              </div>
-            </CoreValueParent>
-          )}
-        </Droppable>
-      ))}
-    </Container>
+                <Placeholder
+                  hasStartedDrag={coreValue.hasStartedDrag}
+                  hasCompletedDrag={coreValue.hasCompletedDrag}
+                  hasCanceledDrag={coreValue.hasCanceledDrag}
+                >
+                  {coreValue.text}
+                </Placeholder>
+                <CoreValueWrapper
+                  hasStartedDrag={coreValue.hasStartedDrag}
+                  hasCompletedDrag={coreValue.hasCompletedDrag}
+                  hasCanceledDrag={coreValue.hasCanceledDrag}
+                >
+                  <CoreValue
+                    index={index}
+                    coreValueId={coreValue.id}
+                    text={coreValue.text}
+                    hasGroupedCoreValues={hasGroupedCoreValues}
+                    selected={isSelected(coreValue.id)}
+                    updateSelections={updateSelections}
+                  />
+                </CoreValueWrapper>
+                <div style={{ display: 'none' }}>
+                  {provided.placeholder}
+                </div>
+              </CoreValueParent>
+            )}
+          </Droppable>
+        ))}
+      </Container>
     </Wrapper>
   )
 };
