@@ -87,7 +87,6 @@ export const valuesData = [
   'power',
   'preparedness',
   'proactivity',
-  'proactive',
   'professionalism',
   'punctuality',
   'quality',
