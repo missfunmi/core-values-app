@@ -31,6 +31,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.columnSectionRef = React.createRef();
+
     this.suppressHints = this.suppressHints.bind(this);
     this.updateSelections = this.updateSelections.bind(this);
     this.displayMiddleSection = this.displayMiddleSection.bind(this);
@@ -126,6 +128,8 @@ class App extends React.Component {
       hasGroupedCoreValues: true,
       activeHints: [hintsData[Constants.HINT_FOUR]]
     });
+
+    this.columnSectionRef.current.scrollIntoView();
   }
 
   updateCoreValue(coreValueId, hasStartedDrag, hasCompletedDrag, hasCanceledDrag) {
@@ -274,6 +278,9 @@ class App extends React.Component {
               updateSelections={this.updateSelections}
               displayMiddleSection={this.displayMiddleSection}
             />
+            <div
+              ref={this.columnSectionRef}
+            >
             <MiddleSection
               coreValues={this.state.coreValues}
               selections={this.state.selections}
@@ -284,6 +291,7 @@ class App extends React.Component {
               displayBottomSection={this.displayBottomSection}
               updateTopFiveCoreValues={this.updateTopFiveCoreValues}
             />
+            </div>
             <BottomSection
               coreValues={this.state.coreValues}
               topFiveCoreValues={this.state.topFiveCoreValues}

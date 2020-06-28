@@ -35,8 +35,8 @@
   - [x] FIX: Overlaps with final core values when there are 5 in the list
   - [x] But Logo goes off screen as more elements are added to UI! Ugh!
   - [x] Make footer stick to bottom of browser without overlapping content
-- [ ] New font
-- [ ] Scroll to Final Core Values table on clicking second continue button
+- [ ] New font?
+- [x] Scroll to Final Core Values table on clicking second continue button
 - [ ] Email or tweet your core values - create an image?
 - [x] Update content
   - [x] Add open graph metadata
@@ -44,6 +44,7 @@
 - [x] Add proper README and move open items to github issues or separate file
 - [ ] Browser-specific issues:
   - [ ] Safari (mobile & desktop) - dragging core value from main panel leaves whitespace next to placeholder
+- [x] Add to personal site
 
 ## v2
 - [ ] Tests: [testing-library](https://github.com/testing-library/react-testing-library)
@@ -56,6 +57,8 @@
   - [ ] Update components to function style
   - [x] Centralized constants and utils
 - [ ] Add a reset button to clear all grouped items back to the main panel
+- [ ] Change delete interaction 
+  - [ ] Add a drop zone below each column with a trash icon such that when dropped into it, the core value is returned to the main panel
 - [ ] More illustrations?
 - [ ] Hints update:
   - [ ] Add button to permanently hide hints

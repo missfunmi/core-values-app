@@ -31,7 +31,9 @@ class MiddleSection extends React.Component {
                                     ? true : false;
 
     return (
-      <Container hasSelectedCoreValues={hasSelectedCoreValues}>
+      <Container 
+        hasSelectedCoreValues={hasSelectedCoreValues}
+      >
         <GroupingColumnPanel 
           coreValues={this.props.coreValues} 
           columns={this.props.columns}

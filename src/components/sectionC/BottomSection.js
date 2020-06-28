@@ -8,8 +8,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  /* display: 'flex';  */
-  /* visibility: ${props => (props.hasGroupedCoreValues ? 'visible' : 'hidden')};  */
+  margin-bottom: 50px;
   display: ${props => (props.hasGroupedCoreValues ? 'flex' : 'none')}; 
 `;
 
