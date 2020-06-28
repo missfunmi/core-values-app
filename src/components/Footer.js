@@ -34,7 +34,10 @@ const Icon = styled.span`
   animation: ${pulse} 1.2s infinite;
 `;
 
-const HyperLink = styled.a`
+const HyperLink = styled.a.attrs({ 
+  target: '_blank',
+  href: 'https://missfunmi.com'
+})`
   text-decoration: none;
   color: #3b4754;
   &:hover {
@@ -47,7 +50,7 @@ class Footer extends React.Component {
   render() {
     return (
       <Container>
-        <Blurb>Made with <Icon><FontAwesomeIcon icon={faHeart} /></Icon> in NYC by <HyperLink href="https://github.com/missfunmi">@missfunmi</HyperLink></Blurb>
+        <Blurb>Made with <Icon><FontAwesomeIcon icon={faHeart} /></Icon> in NYC by <HyperLink>missfunmi</HyperLink></Blurb>
       </Container>
     );
   }
