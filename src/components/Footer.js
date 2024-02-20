@@ -46,10 +46,23 @@ const HyperLink = styled.a.attrs({
   }
 `;
 
+const TaprootLink = styled.a.attrs({ 
+  target: '_blank',
+  href: 'https://www.taproot.com/live-your-core-values-exercise-to-increase-your-success'
+})`
+  text-decoration: none;
+  color: #3b4754;
+  &:hover {
+    color: #3d8af7;
+    text-decoration: none;
+  }
+`;
+
 class Footer extends React.Component {
   render() {
     return (
       <Container>
+        <Blurb>Inspired by the <TaprootLink>Live Your Core Values Exercise by TapRoot</TaprootLink></Blurb>
         <Blurb>Made with <Icon><FontAwesomeIcon icon={faHeart} /></Icon> in NYC by <HyperLink>missfunmi</HyperLink></Blurb>
       </Container>
     );
