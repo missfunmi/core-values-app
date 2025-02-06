@@ -47,6 +47,7 @@
 - [x] Add to personal site
 
 ## v2
+- [ ] ‼️ Migrate draggable functionality to [dnd-kit](https://github.com/clauderic/dnd-kit) or [pragmatic-drag-and-drop](https://github.com/atlassian/pragmatic-drag-and-drop). See: [deprecation announcement for react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd/issues/2672) - to be set to read-only mode in April 2025
 - [ ] Tests: [testing-library](https://github.com/testing-library/react-testing-library)
 - [ ] Adjust styles & animations for other browsers (Chrome, Safari, mobile browsers)
 - [ ] Switch to [CSS Grid Layout](https://css-tricks.com/snippets/css/complete-guide-grid/)
